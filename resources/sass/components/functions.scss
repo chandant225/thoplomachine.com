@@ -1,0 +1,184 @@
+@mixin gradient() {
+    // gradinent
+    // background: rgb(66, 133, 244);
+    background: $p-color;
+    background: linear-gradient(263deg, $p-color 0%, $s-color 79%);
+}
+
+@mixin button() {
+    .button {
+        padding: 10px 20px;
+        font-size: 12px;
+        font-weight: bold;
+        border: none;
+        // blue gradient
+        // border: 1px solid $p-color;
+        background-color: $p-color;
+        border-radius: 5px;
+        color: white;
+        transition: 0.3s ease;
+        &:hover {
+            box-shadow: $box-shadow;
+            color: white;
+            background-color: $p-color;
+        }
+    }
+    // .button {
+    //     display: inline-block;
+    //     padding: 10px;
+    //     color: $p-color;
+    //     text-transform: uppercase;
+    //     font-size: 1rem;
+    //     // border-radius: 10px;
+    //     letter-spacing: 0.15rem;
+    //     transition: all 0.3s;
+    //     position: relative;
+    //     overflow: hidden;
+    //     border: 2px solid $p-color;
+    //     font-weight: bold;
+    //     z-index: 1;
+    //     &:after {
+    //         content: "";
+    //         position: absolute;
+    //         bottom: 0;
+    //         left: 0;
+    //         width: 100%;
+    //         height: 100%;
+    //         background-color: white;
+    //         z-index: -2;
+    //     }
+    //     &:before {
+    //         content: "";
+    //         position: absolute;
+    //         bottom: 0;
+    //         left: 0;
+    //         width: 0%;
+    //         height: 100%;
+    //         background-color: $p-color;
+    //         transition: all 0.3s;
+    //         z-index: -1;
+    //     }
+    //     &:hover {
+    //         color: #fff !important;
+    //         &:before {
+    //             width: 100%;
+    //         }
+    //     }
+    // }
+}
+
+@mixin cover() {
+    img {
+        object-fit: cover;
+        object-position: center center;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@mixin slideButton() {
+    .bc-button {
+        width: 120px;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        &:hover {
+            span {
+                width: 100%;
+            }
+        }
+        label {
+            display: block;
+            text-transform: uppercase;
+            font-size: h5;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+        span {
+            width: 20%;
+            height: 3px;
+            transition: 0.3s ease;
+            background-color: $p-color;
+        }
+    }
+}
+
+@mixin title() {
+    .title {
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 24px;
+        font-family: $normal !important;
+        letter-spacing: 2px;
+        color: $s-color;
+        h1 {
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 24px;
+            letter-spacing: 2px;
+        }
+    }
+}
+
+@mixin blog_content() {
+    .blog-content {
+        height: 40vh;
+        border-radius: 5px;
+        box-shadow: $box-shadow;
+        overflow: hidden;
+        cursor: pointer;
+        &:hover {
+            // box-shadow: 0px 0px 20px 3px $s-color;
+            img {
+                padding-top: 0px;
+                transform: scale(1.05);
+            }
+        }
+        .blog-image {
+            height: 60%;
+            width: 100%;
+            overflow: hidden;
+            img {
+                width: 100%;
+                height: 100%;
+                object-position: center center;
+                object-fit: cover;
+                transition: 0.3s ease;
+            }
+        }
+        .blog-date {
+            padding: 10px;
+            p {
+                color: $light-grey;
+                margin: 0px;
+                font-size: 12px;
+            }
+        }
+        .blog-title {
+            padding: 0px 10px;
+            h2 {
+                margin: 0px;
+                font-size: $h4;
+                font-weight: bold;
+            }
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .blog-content {
+            .blog-image {
+                height: 70%;
+                width: 100%;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-position: center center;
+                    object-fit: cover;
+                    transition: 0.3s ease;
+                }
+            }
+        }
+    }
+}

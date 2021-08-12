@@ -1,0 +1,187 @@
+@import "./components/base.scss";
+
+.contact-body {
+    background-color: $light;
+}
+#about-head {
+    margin-top: 80px;
+    padding-bottom: 30px;
+    .blog-header-title {
+        padding-left: 7%;
+        h1 {
+            font-weight: bold;
+            font-size: $lg-h1;
+        }
+        .c-btn {
+            margin-bottom: 50px;
+            margin-top: 30px;
+            .button {
+                padding: 15px 30px;
+                background-color: $p-color;
+            }
+        }
+        .links {
+            span {
+                padding: 5px;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+#about-content {
+    .about-content {
+        margin-top: 50px;
+        .about-description {
+            width: 90%;
+            margin: auto;
+            margin-bottom: 10vh;
+            .about-title {
+                overflow: hidden;
+                position: relative;
+                h1 {
+                    font-size: 60px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 200px;
+                }
+                p {
+                    position: absolute;
+                    top: 45%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    font-size: 180px;
+                    letter-spacing: 10px;
+                    font-weight: 800;
+                    z-index: -1;
+                    color: #f7a488;
+                    animation: about_slide 2s ease;
+                    @keyframes about_slide {
+                        from {
+                            left: 0%;
+                        }
+                        to {
+                            left: 50%;
+                        }
+                    }
+                }
+            }
+            .about-detail {
+                p {
+                    line-height: 30px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #about-content {
+        .about-content {
+            .about-description {
+                margin-bottom: 50px;
+                .about-title {
+                    h1 {
+                        font-size: 50px;
+                    }
+                    p {
+                        font-size: 130px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#our-mission {
+    padding: 50px 0px;
+    background-color: $light;
+    margin-bottom: 50px;
+    .om-wrapper {
+        width: 90%;
+        margin: auto;
+        .our-mission {
+            .om-title {
+                margin-bottom: 30px;
+                h1,
+                p {
+                    text-align: center;
+                }
+                h1 {
+                    font-size: 24px;
+                    font-weight: bold;
+                }
+            }
+            .om-description {
+                p {
+                    font-weight: 300;
+                    font-style: italic;
+                }
+            }
+        }
+    }
+}
+
+#our-teams {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 50px;
+    .our-teams {
+        .ot-title {
+            margin-bottom: 30px;
+            h1 {
+                font-weight: bold;
+                text-align: center;
+            }
+        }
+        .our-teams-wrapper {
+            .ot-item {
+                .ot-content {
+                    padding: 5px;
+                    cursor: pointer;
+                    &:hover {
+                        .ot-image {
+                            // box-shadow: $primary-shadow;
+                            .social-icons {
+                                bottom: 0px;
+                            }
+                        }
+                    }
+                    .ot-image {
+                        position: relative;
+                        height: 300px;
+                        @include cover();
+                        overflow: hidden;
+                        .social-icons {
+                            padding: 10px;
+                            width: 100%;
+                            position: absolute;
+                            bottom: -50px;
+                            transition: 0.3s ease;
+                            background-color: $p-color;
+                            span {
+                                padding: 10px;
+                                a {
+                                    i {
+                                        color: white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .ot-name {
+                        margin-top: 20px;
+                        h3 {
+                            font-size: 18px;
+                            font-weight: bold;
+                        }
+                        p {
+                            color: $light-grey;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

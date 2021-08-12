@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /thank-you/
+Noindex: /thank-you/
+Disallow:
+Sitemap: https://outofboxdesign.com/sitemap.xml

@@ -1,0 +1,128 @@
+.footer {
+    background-color: black;
+    padding-top: 40px;
+    .footer-wrapper {
+        .footer-list {
+            .footer-item {
+                .f-logo {
+                    h3 {
+                        color: white;
+                        font-weight: bold;
+                    }
+                }
+                .f-follow {
+                    ul {
+                        display: flex;
+                        flex-direction: row;
+                        li {
+                            padding: 10px;
+                            a {
+                                i {
+                                    color: white;
+                                    &:hover {
+                                        color: $p-color;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .fi-item {
+                    margin-bottom: 30px;
+                    h4 {
+                        color: white;
+                        font-weight: bold;
+                        color: $light-grey;
+                        font-size: 14px;
+                        margin-bottom: 20px;
+                    }
+                    p {
+                        font-size: 16px;
+                        strong,
+                        span,
+                        a {
+                            color: white;
+                        }
+                        strong {
+                            font-weight: bold;
+                            display: block;
+                        }
+                    }
+                    .s-form {
+                        display: flex;
+                        flex-direction: row;
+                        button {
+                            border-radius: 0px;
+                        }
+                        input {
+                            background-color: $black;
+                            border: 0px solid $black;
+                        }
+                    }
+                }
+            }
+        }
+        .copyright {
+            margin-top: 30px;
+            padding: 20px 0px;
+            border-top: 0.5px solid $light-grey;
+            .fi-item {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                p {
+                    color: white;
+                    margin-bottom: 0px;
+                }
+            }
+        }
+    }
+}
+
+#contact {
+    background-color: rgb(24, 23, 23);
+    .contact {
+        padding: 60px 30px;
+        .contact-wrapper {
+            .contact-items {
+                justify-content: space-between;
+                .c-item {
+                    a {
+                        padding: 15px 30px;
+                        background-color: $p-color;
+                        font-size: 16px;
+                        &:hover {
+                            i {
+                                padding-right: 5px;
+                                padding-left: 5px;
+                            }
+                        }
+                        i {
+                            padding-left: 10px;
+                            transition: 0.3s ease;
+                        }
+                    }
+
+                    h4 {
+                        color: white;
+                        font-size: $lg-h1;
+                        font-weight: bold;
+                        margin-bottom: 30px;
+                    }
+                    h6 {
+                        font-weight: bold;
+                        color: $light-grey;
+                        margin-bottom: 30px;
+                    }
+                }
+            }
+            .contact-info {
+                border-top: 1px solid $light-grey;
+                p {
+                    margin-top: 30px;
+                    color: white;
+                }
+            }
+        }
+    }
+}

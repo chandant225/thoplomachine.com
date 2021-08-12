@@ -1,0 +1,89 @@
+@include slideButton();
+.blog {
+    margin: auto;
+    margin-bottom: 70px;
+    .b-header-title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: 5px solid $light;
+        margin-bottom: 20px;
+        p {
+            font-weight: bold;
+            font-size: $h1;
+            color: $p-color;
+            margin: 0px;
+            text-transform: uppercase;
+        }
+        .blog-button {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            margin-bottom: 5px;
+            a {
+                color: $p-color;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+        }
+    }
+    .blog-list {
+        .blog-item {
+            .blog-content {
+                height: 100%;
+                width: 100%;
+                .blog-image {
+                    height: 150px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center center;
+                        padding: 0px;
+                        margin: 0px;
+                    }
+                }
+                .blog-title {
+                    padding: 10px;
+                    h5 {
+                        font-size: 24px;
+                    }
+                    .blog-description {
+                        font-size: 14px;
+                    }
+                    .bc-button {
+                        margin-top: 20px;
+                        label {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width:576px) {
+    .blog {
+        .b-header-title {
+            p {
+                font-size: $h2;
+            }
+        }
+    }
+}
+
+@media screen and(max-width:400px) {
+    .blog {
+        .b-header-title {
+            p {
+                font-size: $h4;
+            }
+            .blog-button {
+                a {
+                    font-size: $h6;
+                }
+            }
+        }
+    }
+}

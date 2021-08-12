@@ -1,0 +1,41 @@
+.blog-column {
+    margin-top: 40px;
+    background-color: white;
+    .bc-title {
+        margin-bottom: 20px;
+        h1 {
+            font-weight: bold;
+            color: $p-color;
+            font-size: 60px;
+            text-transform: uppercase;
+        }
+    }
+
+    .bc-list {
+        margin-top: 30px;
+        .bc-item {
+            // border-bottom: 1px solid $bg-color;
+            padding-bottom: 10px;
+            .bc-image {
+                height: auto !important;
+                overflow: hidden;
+                img {
+                    @include cover();
+                }
+            }
+            .bc-description {
+                h3 {
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+                p {
+                    color: $light-grey;
+                }
+                @include slideButton();
+            }
+        }
+    }
+}
+
+@media screen and(max-width:576px) {
+}

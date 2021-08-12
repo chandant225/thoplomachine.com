@@ -1,0 +1,136 @@
+@import "./all";
+@import "./functions";
+@import "./navbar";
+@import "./footer";
+
+.color {
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.bg-color {
+    color: rgba(134, 134, 134, 0.8);
+}
+.primary-bg {
+    background-color: $p-color;
+}
+.borders {
+    border-bottom: 0.5px solid $border;
+}
+
+.p-color {
+    color: $p-color;
+}
+
+body {
+    width: 100%;
+    background-color: white;
+    overflow-x: hidden !important;
+    position: relative;
+}
+
+.gap {
+    height: $nav-height;
+    width: 100%;
+}
+
+.hover {
+    position: relative;
+    &:hover {
+        border: $hover-border;
+        &::before {
+            display: block;
+        }
+    }
+    &::before {
+        display: none;
+        content: "";
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: $p-light;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: hover_zoom 5s ease;
+        z-index: -1;
+        transition: 0.2 ease;
+    }
+}
+
+@keyframes hover_zoom {
+    from {
+        scale: 0;
+        opacity: 0.3;
+    }
+    to {
+        scale: 1;
+        opacity: 0;
+    }
+}
+
+// faq
+.faq {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    .faq-title {
+        h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+    }
+    .faq-wrapper {
+        .faq-item {
+            position: relative;
+            cursor: pointer;
+
+            .fi-title {
+                background-color: $light;
+                padding: 10px;
+                .fi-head > * {
+                    margin-bottom: 0px;
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+                i {
+                    position: absolute;
+                    top: 10px;
+                    right: 20px;
+                    font-size: $h3;
+                    padding-right: 5px;
+                    transition: 0.3s ease-in-out;
+                }
+            }
+            p {
+                max-height: 0px;
+                user-select: none;
+                overflow-y: hidden;
+                transition: max-height 0.5s linear;
+                color: $light-grey;
+                padding: 0px 10px;
+            }
+        }
+    }
+}
+
+.my-active span {
+    color: $p-color !important;
+    font-weight: bold !important;
+}
+
+.pager {
+    display: flex;
+    justify-content: center;
+    li {
+        padding: 5px;
+        font-size: 24px;
+    }
+    .disabled {
+        span {
+            i {
+                color: $light-grey;
+            }
+        }
+    }
+}

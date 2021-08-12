@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+// colors
+$p-color: #f05d2e;
+// $p-color: #fbb03b;
+$s-color: #2b897b;
+$bg-light-blue: #dcefff;
+$black: #262629;
+$light: #f8f9fa;
+$gold: #ff9144;
+$light-grey: #696970;
+$border-light: #f1f0ff;
+$light-bg: rgba(255, 255, 255, 0.8);
+$bg-color: rgba(0, 0, 0, 0.02);
+$border: rgba(35, 34, 38, 0.4);
+$hover-border: 1px solid rgba(231, 49, 49, 0.5);
+$p-light: rgba(231, 49, 49, 0.5);
+
+$cursive: "Lobster", cursive;
+$normal: "Roboto", sans-serif;
+
+$box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+$primary-shadow: 0px 0px 20px 0px $p-color;
+
+// text -sizing
+$lg-h1: 50px;
+$lg-h2: 40px;
+$h1: 30px;
+$h2: 28px;
+$h3: 24px;
+$h4: 18px;
+$h5: 16px;
+$h6: 14px;
+$h7: 12px;
+
+* {
+    color: $black;
+    scroll-behavior: smooth;
+    font-family: "Sen", sans-serif;
+    font-weight: 300;
+    padding: 0px;
+    margin: 0px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    color: $black;
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+        color: black;
+    }
+}
+
+input,
+textarea {
+    width: 100% !important;
+    -webkit-user-select: auto !important;
+    user-select: auto !important;
+}
+
+input[type="date"] {
+    display: block;
+
+    /* Solution 1 */
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    min-height: 1.2em;
+
+    /* Solution 2 */
+    /* min-width: 96%; */
+}
+
+#alert-message {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 30%;
+    z-index: 9;
+    // gradinent
+    background: $p-color;
+    background: linear-gradient(263deg, $p-color 0%, $s-color 79%);
+    color: white;
+    box-shadow: 0px 0px 20px black;
+    border-radius: 10px;
+}
+
+@media screen and(max-width:768px) {
+    #alert-message {
+        width: 70%;
+    }
+}

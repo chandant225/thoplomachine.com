@@ -1,0 +1,158 @@
+.menu {
+    margin-top: 70px;
+    .menu-title {
+        h5,
+        h1 {
+            text-align: center;
+        }
+        h5 {
+            font-family: $cursive;
+            letter-spacing: 2px;
+            color: $light-grey;
+        }
+    }
+    .menu-nav {
+        .menu-list {
+            margin-bottom: 80px;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            user-select: none;
+            .swiper-wrapper {
+                margin-left: 50px;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                .swiper-slide {
+                    margin-right: 10px;
+                    .swiper-cat-color {
+                        background-color: $p-color;
+                        color: white;
+                    }
+                    width: auto;
+                    text-align: center;
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: $light-grey;
+                    text-transform: uppercase;
+
+                    cursor: pointer;
+                    span {
+                        min-width: 100px;
+                        border-radius: 30px;
+                        display: block;
+                        padding: 10px;
+                        border: 1px solid $p-color;
+                    }
+                }
+            }
+        }
+    }
+    .show-more {
+        width: 200px;
+        display: block;
+        margin: 0 auto;
+        margin-top: 30px;
+        outline: none !important;
+    }
+    .menu-list {
+        .menu-list-wrapper {
+            .menu-item {
+                position: relative;
+                .menu-item-content {
+                    border: 1px solid $light;
+                    border-right: 1px solid $light;
+                    &:hover {
+                        .menu-image {
+                            img {
+                                transform: rotate(360deg);
+                                transition: all 5s ease-in-out;
+                            }
+                        }
+                    }
+                    .menu-image {
+                        overflow: hidden;
+                        margin-bottom: 20px;
+                        display: flex;
+                        justify-content: center;
+                        img {
+                            width: 80%;
+                            margin: auto;
+                        }
+                    }
+
+                    .menu-text {
+                        padding-bottom: 20px;
+                        &:hover {
+                            .menu-cart {
+                                display: block;
+                            }
+                        }
+                        .menu-title {
+                            position: relative;
+
+                            h4,
+                            span {
+                                color: $light-grey;
+
+                                padding: 0px 5px;
+                            }
+                            h4 {
+                                font-size: 14px;
+                                font-weight: bold;
+                                padding-left: 0px;
+                                text-transform: uppercase;
+                            }
+                            span {
+                                font-size: 14px;
+                                color: $p-color;
+                                font-weight: bold;
+                            }
+                        }
+                        .menu-cat {
+                            span {
+                                font-size: 12px;
+                                font-weight: bold;
+                                padding-right: 5px;
+                                color: $light-grey;
+                            }
+                        }
+                        .menu-cart {
+                            display: none;
+                            position: absolute;
+                            bottom: 20px;
+                            right: 20px;
+                            transition: all 0.5s ease;
+                            .add-cart {
+                                float: right;
+                                font-size: 10px;
+                                padding: 2px 2px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .menu {
+        .menu-list {
+            .menu-list-wrapper {
+                .menu-item {
+                    .menu-item-content {
+                        border: 1px solid $border-light;
+
+                        .menu-text {
+                            .menu-cart {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
