@@ -18,11 +18,15 @@ class CreateServicesTable extends Migration
             $table->string('name');
             $table->string('slug');
 
-            $table->integer('cat_id');
             $table->integer('status')->default(0);
-
+            $table->string('service_info')->nullable();
             $table->string('image');
-            $table->string('description');
+            $table->longText('description');
+
+            $table->string('seo_title')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->string('meta_keywords')->nullable();
+
             $table->timestamps();
         });
     }

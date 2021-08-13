@@ -84,7 +84,7 @@
             <div class="form-group">
                 <label for="meta_description">Meta Description</label>
                 <input type="hidden" name="types[]" value="meta_description">
-                <textarea name="meta_description" class="form-control" id="map"
+                <textarea name="meta_description" class="form-control" id="meta_description"
                     placeholder="meta description">{{ get_setting('meta_description') }}</textarea>
             </div>
 
@@ -96,6 +96,11 @@
 @section('scripts')
 <script>
     var upload = new FileUploadWithPreview("myUniqueUploadId");
+
+    tinymce.init({
+      selector: '#location',
+      toolbar_mode: 'floating',
+   });
 </script>
 @endsection
 @endsection

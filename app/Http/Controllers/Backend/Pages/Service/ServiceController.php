@@ -19,7 +19,7 @@ class ServiceController extends BaseController
      */
     public function index()
     {
-        return view('admin_pages.service.service');
+        return view('admin.pages.service');
     }
 
     public function pricingShow()
@@ -34,8 +34,7 @@ class ServiceController extends BaseController
                 $key = $request->keywords;
                 $searchBy = $request->search_by;
                 $contact = Service::where($searchBy, 'like', '%' . $key . '%')
-                    ->join('service_categories', 'service_categories.id', '=', 'services.cat_id')
-                    ->select('services.*', 'service_categories.category')
+                    ->select('services.*')
                     ->where('services.status', '=', 1)
                     ->orderBy('services.id', 'desc')
                     ->paginate(10);
@@ -43,8 +42,7 @@ class ServiceController extends BaseController
                 $key = $request->keywords;
                 $searchBy = $request->search_by;
                 $contact = Service::where($searchBy, 'like', '%' . $key . '%')
-                    ->join('service_categories', 'service_categories.id', '=', 'services.cat_id')
-                    ->select('services.*', 'service_categories.category')
+                    ->select('services.*')
                     ->where('services.status', '=', 0)
                     ->orderBy('services.id', 'desc')
                     ->paginate(10);
@@ -55,13 +53,11 @@ class ServiceController extends BaseController
                 $key = $request->keywords;
                 $searchBy = $request->search_by;
                 $contact = Service::where($searchBy, 'like', '%' . $key . '%')
-                    ->join('service_categories', 'service_categories.id', '=', 'services.cat_id')
-                    ->select('services.*', 'service_categories.category')
+                    ->select('services.*')
                     ->orderBy('services.id', 'desc')
                     ->paginate(10);
             } else {
-                $contact = Service::join('service_categories', 'service_categories.id', '=', 'services.cat_id')
-                    ->select('services.*', 'service_categories.category')
+                $contact = Service::select('services.*')
                     ->orderBy('services.id', 'desc')
                     ->paginate(10);
             }
@@ -83,7 +79,7 @@ class ServiceController extends BaseController
         $validation = $request->validate([
             'name' => 'required|string',
             'description' => 'required|string',
-            'category' => 'required|string',
+            'service_info' => 'required|string',
             'image' => 'required',
         ]);
 
@@ -91,9 +87,16 @@ class ServiceController extends BaseController
             $i = Storage::disk('public')->put('service', $request->image[0]);
             $store = new Service();
             $slugify = new Slugify();
+
             $store->slug = $slugify->slugify($request->name);
             $store->name = \strtolower($request->name);
-            $store->cat_id = $request->category;
+            // $store->cat_id = $request->category;
+            $store->service_info = $request->service_info;
+
+
+            $store->seo_title = $request->seo_title;
+            $store->meta_description = $request->meta_description;
+            $store->meta_keywords = $request->meta_keywords;
 
             $store->status = $request->status;
             $store->description = $request->description;
@@ -117,7 +120,7 @@ class ServiceController extends BaseController
         $validate = $request->validate([
             'name' => 'required|string',
             'description' => 'required|string',
-            'category' => 'required|string',
+            'service_info' => 'required|string',
             'prev_image' => 'required|string',
         ]);
 
@@ -134,8 +137,14 @@ class ServiceController extends BaseController
         $store->slug = $slugify->slugify($request->name);
 
         $store->name = \strtolower($request->name);
-        $store->cat_id = $request->category;
+        // $store->cat_id = $request->category;
+        $store->service_info = $request->service_info;
         $store->description = $request->description;
+
+
+        $store->seo_title = $request->seo_title;
+        $store->meta_description = $request->meta_description;
+        $store->meta_keywords = $request->meta_keywords;
 
         $store->status = $request->status;
 

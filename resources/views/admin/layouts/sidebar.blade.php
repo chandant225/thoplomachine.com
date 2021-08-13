@@ -48,10 +48,22 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         {{-- <h6 class="collapse-header">Custom Utilities:</h6> --}}
                         <a class="collapse-item {{ Route::currentRouteName() == 'portfolio.index' ? 'active' : '' }}" href="{{ route('portfolio.index') }}">Portfolio</a>
-                        <a class="collapse-item {{ Route::currentRouteName() == 'portfolio.categories.index' ? 'active' : '' }}" href="{{ route('portfolio.categories.index') }}">Category</a>
+                        {{-- <a class="collapse-item {{ Route::currentRouteName() == 'portfolio.categories.index' ? 'active' : '' }}" href="{{ route('portfolio.categories.index') }}">Category</a> --}}
                     </div>
                 </div>
             </li>
+
+            <li class="nav-item {{ Route::currentRouteName() == 'service.index' ? 'active' : '' }}">
+                <a class="nav-link " href="{{ route('service.index') }}">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Services</span></a>
+            </li>
+            <li class="nav-item  {{ Route::currentRouteName() == 'teams.index' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('teams.index') }}">
+                    <i class="fas fa-users"></i>
+                    <span>Teams</span></a>
+            </li>
+
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"

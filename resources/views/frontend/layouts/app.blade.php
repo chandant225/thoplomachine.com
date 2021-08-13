@@ -1,25 +1,16 @@
+@include('frontend.layouts.header')
 
+  <!-- ======= Nav ======= -->
+    @include('frontend.layouts.nav')
+    <!-- ======= Hero Section ======= -->
+    @include('frontend.layouts.herosection')
 
- {{-- @include('frontend.layouts.header')
- @include('frontend.layouts.navbar')
+  <main id="main">
 
         @yield('content')
+  </main><!-- End #main -->
 
-         @include('frontend.layouts.footer')
-     </div>
-     @include('frontend.layouts.script')
- </body>
+  <!-- ======= Footer ======= -->
 
- </html> --}}
-
-@include("frontend.layouts.header")
-
-  @include('frontend.layouts.navbar')
-
- @yield('content')
-@include("frontend.layouts.footer")
- @include("frontend.layouts.script")
-
-</body>
-
-</html>
+  <!-- End Footer -->
+@include('frontend.layouts.footer')

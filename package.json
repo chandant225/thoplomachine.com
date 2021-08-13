@@ -30,9 +30,11 @@
         "bootstrap-vue": "^2.21.2",
         "laravel-vue-pagination": "^2.3.1",
         "vue": "^2.6.12",
+        "vue-confirm-dialog": "^1.0.2",
         "vue-google-charts": "^0.3.3",
         "vue-moment": "^4.1.0",
         "vue-multiselect": "^2.1.6",
+        "vue-toast-notification": "^0.6.2",
         "vue2-timepicker": "^1.1.6",
         "vuejs-datepicker": "^1.6.2"
     }

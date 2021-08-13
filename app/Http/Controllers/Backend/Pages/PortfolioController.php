@@ -48,12 +48,6 @@ class PortfolioController extends BaseController
     {
         // dd($request->all());
         $validation = $request->validate([
-            'name' => 'required|string',
-            'category' => 'required|string',
-            'description' => 'required|string',
-            'link' => 'required|string',
-            'client' => 'required|string',
-            'technology' => 'required|string',
             'image' => 'required',
         ]);
 
@@ -96,12 +90,6 @@ class PortfolioController extends BaseController
         // dd($request->all());
 
         $validate = $request->validate([
-            'name' => 'required|string',
-            'category' => 'required|string',
-            'description' => 'required|string',
-            'link' => 'required|string',
-            'client' => 'required|string',
-            'technology' => 'required|string',
             'prev_image' => 'required|string',
         ]);
 

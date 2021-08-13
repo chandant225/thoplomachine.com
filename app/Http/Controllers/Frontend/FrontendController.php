@@ -24,9 +24,8 @@ class FrontendController extends BaseController
         // all
         $faq = (new Faq)->getCategory('home');
         $script = Script::all();
-        return view('frontend_pages.index', [
+        return view('frontend.index', [
             'portfolio' => $portfolio,
-            // all
             'faq' => $faq,
             'script' => $script,
         ]);
@@ -122,6 +121,13 @@ class FrontendController extends BaseController
 
         $next = Blog::where('category', $blog->category)->paginate(3);
         $script = Script::all();
+
+
+        // $b = Blog::where('slug', $slug)->take(1)->get();
+        // $related = Blog::where('category_id', $b[0]->category_id)->take(4)->get();
+        // $recent = Blog::take(6)->orderBy('id', 'desc')->whereNotIN('slug', [$b[0]->slug])->get();
+
+        // $blog = $b[0];
 
         return view('frontend_pages.blog.blog-detail', [
             'blog' => $blog,

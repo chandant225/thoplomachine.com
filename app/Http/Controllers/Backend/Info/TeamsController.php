@@ -12,7 +12,7 @@ class TeamsController extends BaseController
 {
     public function index()
     {
-        return view('admin_pages.infos.our-teams');
+        return view('admin.pages.ourteams');
     }
 
     public function getAll(Request $request)
@@ -50,7 +50,7 @@ class TeamsController extends BaseController
 
         if ($request->hasfile('image')) {
             $i = Storage::disk('public')->put('teams', $request->image[0]);
-            
+
             $store = new Teams();
             $slugify = new Slugify();
             $store->slug = $slugify->slugify($request->name);
@@ -60,7 +60,7 @@ class TeamsController extends BaseController
             $store->facebook = $request->facebook;
             $store->linkedin = $request->linkedin;
             $store->twitter = $request->twitter;
-      
+
             $store->description = $request->description;
             $store->image = $i;
             $store->save();
@@ -100,7 +100,7 @@ class TeamsController extends BaseController
         } else {
             $i = $request->prev_image;
         }
-        
+
         $store = Teams::find($id);
         $slugify = new Slugify();
 
