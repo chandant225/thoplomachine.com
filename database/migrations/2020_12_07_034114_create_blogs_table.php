@@ -16,10 +16,11 @@ class CreateBlogsTable extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
+
             $table->string('category');
             $table->longText('description');
             $table->string('image');
-            $table->string('written_by');
+            $table->string('written_by')->nullable();
             $table->integer('featured')->default(0);
             $table->string('slug');
             // meta

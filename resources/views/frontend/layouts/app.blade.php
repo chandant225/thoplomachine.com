@@ -3,7 +3,6 @@
   <!-- ======= Nav ======= -->
     @include('frontend.layouts.nav')
     <!-- ======= Hero Section ======= -->
-    @include('frontend.layouts.herosection')
 
   <main id="main">
 

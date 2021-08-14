@@ -24,16 +24,16 @@ Route::get('/about-us', [App\Http\Controllers\Frontend\FrontendController::class
 
 // portfolio
 Route::get('/portfolio', [App\Http\Controllers\Frontend\FrontendController::class, 'portfolioPage']);
-Route::post('/get-portfolio', [App\Http\Controllers\Frontend\FrontendController::class, 'getAllPortfolio']);
+Route::get('/our-clients', [App\Http\Controllers\Frontend\FrontendController::class, 'portfolios']);
 Route::get('/category/portfolio/get', [App\Http\Controllers\Backend\Pages\PortfolioController::class, 'getCategories']);
 // service
 Route::get('/service/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'serviceDetail']);
 // our teams
-Route::get('/teams', [App\Http\Controllers\Frontend\FrontendController::class, 'teams']);
+Route::get('/our-team', [App\Http\Controllers\Frontend\FrontendController::class, 'ourTeam']);
 Route::get('/thank-you', [App\Http\Controllers\Frontend\FrontendController::class, 'thankyou']);
 
 // blog
-Route::get('/blog', [App\Http\Controllers\Frontend\FrontendController::class, 'Blog']);
+Route::get('/blogs', [App\Http\Controllers\Frontend\FrontendController::class, 'Blog']);
 Route::get('/category/{category}', [App\Http\Controllers\Frontend\FrontendController::class, 'blogCategory']);
 Route::get('/blog/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'blogDetail']);
 
@@ -124,6 +124,7 @@ Route::group(['middleware' => ['auth'], 'prefix' =>'admin'], function () {
     Route::post('get-all-service', [App\Http\Controllers\Backend\Pages\Service\ServiceController::class, 'getAllService']);
     Route::get('get-all-service-name', [App\Http\Controllers\Backend\Pages\Service\ServiceController::class, 'getAllServiceName']);
     Route::post('service/update', [App\Http\Controllers\Backend\Pages\Service\ServiceController::class, 'updateService']);
+
     // services category
     Route::post('category/service/store', [App\Http\Controllers\Backend\Pages\Service\ServiceController::class, 'catStore']);
     Route::delete('category/service/delete/{id}', [App\Http\Controllers\Backend\Pages\Service\ServiceController::class, 'catDelete']);

@@ -14,6 +14,8 @@ use App\Models\Portfolio;
 use App\Models\Script;
 use App\Models\Teams;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+use Share;
 
 class FrontendController extends BaseController
 {
@@ -47,16 +49,11 @@ class FrontendController extends BaseController
         return json_encode($this->reportSuccess('Data retrived successfully', $blog));
     }
 
-    public function getAllPortfolio(Request $request)
+    public function portfolios()
     {
-        // dd($request);
-        if ($request->category == 'all') {
-            $contact = Portfolio::orderBy('id', 'desc')->take(6)->get();
-        } else {
-            $contact = Portfolio::where('category', 'LIKE', '%' . $request->category . "%")->orderBy('id', 'desc')->take(6)->get();
-        }
+        $portfolios = Portfolio::orderBy('id', 'desc')->get();
+        return view('frontend.pages.portfolio',compact('portfolios'));
 
-        return json_encode($this->reportSuccess('Data retrived successfully', $contact));
     }
 
     // portfolio details page--------------------------------------
@@ -80,16 +77,16 @@ class FrontendController extends BaseController
     // blog-------------------------------------------
     public function Blog()
     {
-        $category = BlogCategory::all();
-        $faq = (new Faq)->getCategory('blog');
-        $script = Script::all();
+        // $category = Blog::with('category')->paginate(1);
+        // $faq = (new Faq)->getCategory('blog');
+        // $script = Script::all();
 
-        $blogs = Blog::orderBy('id', 'desc')->paginate(1);
-        return view('frontend_pages.blog.blog', [
-            'category' => $category,
+        $blogs = Blog::orderBy('id', 'desc')->paginate(12);
+        return view('frontend.pages.blog.index', [
+            // 'category' => $category,
             'blogs' => $blogs,
-            'faq' => $faq,
-            'script' => $script,
+            // 'faq' => $faq,
+            // 'script' => $script,
 
         ]);
     }
@@ -111,16 +108,46 @@ class FrontendController extends BaseController
         ]);
     }
 
+
     // blog details page --------------------------------
     public function blogDetail($slug)
     {
-        $b = Blog::where('slug', $slug)->take(1)->get();
-        $blog = $b[0];
 
-        $related = Blog::where('category', $blog->category)->take(3)->get();
+        $b = Blog::where('slug', $slug)->first();
+        // $related = Blog::where('category_id', $b[0]->category_id)->take(4)->get();
+        // $recent = Blog::take(6)->orderBy('id', 'desc')->whereNotIN('slug', [$b[0]->slug])->get();
 
-        $next = Blog::where('category', $blog->category)->paginate(3);
-        $script = Script::all();
+        // $blog = $b[0];
+        $fullurl = URL::to('/').'/blog/'.$b->slug;
+        $socialShare = \Share::page(
+            $fullurl,
+            $b->title
+        )
+        ->facebook()
+        ->twitter()
+        ->reddit()
+        ->linkedin()
+        ->whatsapp()
+        ->telegram();
+
+
+        $category = BlogCategory::take(5)->get();
+        return view('frontend.pages.blog.blog-details', [
+            'blog' => $b,
+            // 'related' => $related,
+            // 'recent' => $recent,
+            'categories' => $category,
+            'socialShare' => $socialShare
+        ]);
+
+
+        // $b = Blog::where('slug', $slug)->take(1)->get();
+        // $blog = $b[0];
+
+        // $related = Blog::where('category', $blog->category)->take(3)->get();
+
+        // $next = Blog::where('category', $blog->category)->paginate(3);
+        // $script = Script::all();
 
 
         // $b = Blog::where('slug', $slug)->take(1)->get();
@@ -129,38 +156,29 @@ class FrontendController extends BaseController
 
         // $blog = $b[0];
 
-        return view('frontend_pages.blog.blog-detail', [
-            'blog' => $blog,
-            'related' => $related,
-            'next' => $next,
-            'script' => $script,
+        // return view('frontend_pages.blog.blog-detail', [
+        //     'blog' => $blog,
+        //     'related' => $related,
+        //     'next' => $next,
+        //     'script' => $script,
 
-        ]);
+        // ]);
     }
 
     // contact page
     public function contactPage()
     {
-        $map = Asset::where('type', 'map')->first();
-        $faq = (new Faq)->getCategory('contact');
-        $script = Script::all();
-
-        return view('frontend_pages.contact', [
-            'map' => $map,
-            'faq' => $faq,
-            'script' => $script,
-
-        ]);
+        return view('frontend.pages.contact');
     }
 
-    // contact page
-    public function aboutPage()
+    // Our Teams page
+    public function ourTeam()
     {
         $faq = (new Faq)->getCategory('about');
         $teams = Teams::all();
         $script = Script::all();
 
-        return view('frontend_pages.about', [
+        return view('frontend.pages.our-teams', [
             'teams' => $teams,
             'faq' => $faq,
             'script' => $script,
