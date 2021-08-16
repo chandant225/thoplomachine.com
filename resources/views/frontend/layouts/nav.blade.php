@@ -12,13 +12,13 @@
         <ul>
         <li><a class="nav-link scrollto {{ Route::current()->uri == '/' ? 'active' : '' }}" href="{{ url('/') }}">Home</a></li>
           <li><a class="nav-link {{ Route::current()->uri == 'about-us' ? 'active' : '' }}" href="{{ url('/about-us') }}">About</a></li>
-          <li><a class="nav-link" href="Services.html">Services</a></li>
-          <li><a class="nav-link " href="Product.html">Product</a></li>
+          <li><a class="nav-link {{ Route::current()->uri == 'services' ? 'active' : '' }}" href="{{ url('services') }}">Services</a></li>
+          <li><a class="nav-link {{ Route::current()->uri == 'products' ? 'active' : '' }}" href="{{ url('products') }}">Product</a></li>
           <li><a class="nav-link {{ Route::current()->uri == 'our-team' ? 'active' : '' }}" href="{{ url('our-team') }}">Team</a></li>
           <li><a class="nav-link {{ Route::current()->uri == 'our-clients' ? 'active' : '' }}" href="{{ url('our-clients') }}">Portfolio</a></li>
           <li><a class="nav-link scrollto {{ Route::current()->uri == 'blogs' ? 'active' : '' }}" href="{{ url('blogs') }}">Blog</a></li>
           <li><a class="nav-link scrollto {{ Route::current()->uri == 'contact-us' ? 'active' : '' }}" href="{{ url('contact-us') }}">Contact</a></li>
-          <li><a class="getstarted " href="Shop.html">Shop</a></li>
+          <li><a class="nav-link getstarted {{ Route::current()->uri == 'product/shop' ? 'active' : '' }}" href="{{ url('product/shop') }}">Shop</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

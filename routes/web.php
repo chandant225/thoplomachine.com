@@ -20,7 +20,7 @@ Route::get('/contact-us', [App\Http\Controllers\Frontend\FrontendController::cla
 
 Route::post('/save-contact', [App\Http\Controllers\Frontend\FrontendController::class, 'saveContact']);
 Route::get('/save-newsletter/{email}', [App\Http\Controllers\Frontend\FrontendController::class, 'saveNewsletter']);
-Route::get('/about-us', [App\Http\Controllers\Frontend\FrontendController::class, 'aboutpage']);
+Route::get('/about-us', [App\Http\Controllers\Frontend\FrontendController::class, 'aboutus']);
 
 // portfolio
 Route::get('/portfolio', [App\Http\Controllers\Frontend\FrontendController::class, 'portfolioPage']);
@@ -36,6 +36,14 @@ Route::get('/thank-you', [App\Http\Controllers\Frontend\FrontendController::clas
 Route::get('/blogs', [App\Http\Controllers\Frontend\FrontendController::class, 'Blog']);
 Route::get('/category/{category}', [App\Http\Controllers\Frontend\FrontendController::class, 'blogCategory']);
 Route::get('/blog/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'blogDetail']);
+
+//services
+Route::get('services', [App\Http\Controllers\Frontend\FrontendController::class, 'services']);
+Route::get('service/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'serviceDetails']);
+
+//producsts
+Route::get('products', [App\Http\Controllers\Frontend\FrontendController::class, 'products']);
+Route::get('product/shop', [App\Http\Controllers\Frontend\FrontendController::class, 'productDetails']);
 
 // admin comtrollers--------------------------------------------------------------------------------------------------------
 

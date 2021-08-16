@@ -4,7 +4,15 @@
 @section('meta_keywords', $post->meta_keywords)
 @section('meta_description', $post->meta_description)
 @section('seo_title', $post->meta_description) --}}
+@section('styles')
+<style>
+    .image-fit {
+    object-fit: cover;
+    height: 174px;
 
+}
+</style>
+@endsection
 @section('content')
 <section id="hero" class="d-flex align-items-center">
 
@@ -21,7 +29,7 @@
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-          <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+          <img src="{{ asset('assets/frontend/img/hero-img.png') }}" class="img-fluid animated" alt="">
         </div>
       </div>
     </div>
@@ -34,30 +42,13 @@
         <div class="container">
 
           <div class="row" data-aos="zoom-in">
-
-            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-              <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
-            </div>
-
-            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-              <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
-            </div>
-
-            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-              <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
-            </div>
-
-            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-              <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
-            </div>
-
-            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-              <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
-            </div>
-
-            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-              <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
-            </div>
+            @if (count($clients) > 0)
+                @foreach ($clients as $client)
+                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                    <img src="{{ get_storage_location() }}/{{ $client->image }}" class="img-fluid" alt="{{ $client->name }}">
+                  </div>
+                @endforeach
+            @endif
 
           </div>
 
@@ -74,14 +65,14 @@
 
           <div class="row content">
             <div class="col-lg-6 text-center">
-              <img src="assets/img/about-us.png" class="img-fluid animated" alt="" width="250px">
+              <img src="{{ asset('assets/frontend/img/about-us.png') }}" class="img-fluid animated" alt="" width="250px">
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0">
               <p>
                 Having half a decade of experience working as a freelancer with National and International clients, we
                 have helped 100’s of industries boosting their products with our automation system.
               </p>
-              <a href="AboutUs.html" class="btn-learn-more">Learn More</a>
+              <a href="{{ url('/about-us') }}" class="btn-learn-more">Learn More</a>
             </div>
           </div>
 
@@ -165,7 +156,7 @@
             </div>
 
             <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img"
-              style='background-image: url("assets/img/why-us.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+              style='background-image: url("assets/frontend/img/why-us.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
           </div>
 
         </div>
@@ -329,6 +320,7 @@
       </section><!-- End Motivation -->
 
       <!-- ======= Services Section ======= -->
+      @if (count($services) > 0)
       <section id="services" class="services section-bg">
         <div class="container" data-aos="fade-up">
 
@@ -337,102 +329,37 @@
           </div>
 
           <div class="row">
-            <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-              <div class="icon-box">
-                <div class="icon">
-                  <div class="icon-img">
+            @foreach ($services as $service)
+
+              <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+              <a href="{{ url('service') }}/{{ $service->slug }}">
+                <div class="card">
+                  <img class="card-img image-fit"
+                    src="{{ get_storage_location() }}/{{ $service->image }}"
+                    alt="{{$service->title }}"
+                    class="">
+                    <div class="card-body">
+                      <h4><a href="">{{ $service->name }}</a></h4>
+                      <p>{{ $service->service_info }}</p>
+                      <a class="learn-more-btn" href="{{ url('service') }}/{{ $service->slug }}">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <line x1="12" y1="8" x2="12" y2="16"></line>
+                          <line x1="8" y1="12" x2="16" y2="12"></line>
+                      </svg>
+                      Learn More
+                      </a>
                   </div>
                 </div>
-                <div class="card-body">
-                  <h4><a href="">Fish Pond Automation</a></h4>
-                  <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                  <a class="learn-more-btn" href="ServicesInner.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <line x1="12" y1="8" x2="12" y2="16"></line>
-                      <line x1="8" y1="12" x2="16" y2="12"></line>
-                    </svg>
-                    Learn More
-                  </a>
-                </div>
-              </div>
+              </a>
             </div>
-
-            <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-              data-aos-delay="200">
-              <div class="icon-box">
-                <div class="icon">
-                  <div class="icon-img">
-                  </div>
-                </div>
-                <div class="card-body">
-                  <h4><a href="">IoT Devices - Home Automation</a></h4>
-                  <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                  <a class="learn-more-btn" href="ServicesInner.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <line x1="12" y1="8" x2="12" y2="16"></line>
-                      <line x1="8" y1="12" x2="16" y2="12"></line>
-                    </svg>
-                    Learn More
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
-              data-aos-delay="300">
-              <div class="icon-box">
-                <div class="icon">
-                  <div class="icon-img">
-                  </div>
-                </div>
-                <div class="card-body">
-                  <h4><a href="">IoT Devices - Industrial Automation</a></h4>
-                  <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                  <a class="learn-more-btn" href="ServicesInner.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <line x1="12" y1="8" x2="12" y2="16"></line>
-                      <line x1="8" y1="12" x2="16" y2="12"></line>
-                    </svg>
-                    Learn More
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
-              data-aos-delay="400">
-              <div class="icon-box">
-                <div class="icon">
-                  <div class="icon-img">
-
-                  </div>
-                </div>
-                <div class="card-body">
-                  <h4><a href="">Long Range Device Development</a></h4>
-                  <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                  <a class="learn-more-btn" href="ServicesInner.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <line x1="12" y1="8" x2="12" y2="16"></line>
-                      <line x1="8" y1="12" x2="16" y2="12"></line>
-                    </svg>
-                    Learn More
-                  </a>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
+            @endforeach
         </div>
-      </section><!-- End Services Section -->
+
+    </div>
+</section><!-- End Services Section -->
+@endif
 
 
       <!-- ======= Cta Section ======= -->
@@ -445,7 +372,7 @@
 
             </div>
             <div class="col-lg-3 cta-btn-container text-center">
-              <a class="cta-btn align-middle" href="#">Reach Us</a>
+              <a class="cta-btn align-middle" href="{{ url('contact-us')  }}">Reach Us</a>
             </div>
           </div>
 
@@ -454,6 +381,7 @@
 
 
       <!-- ======= Blog ======= -->
+      @if (count($blogs) > 0)
       <Section id='blog' class="blog">
         <div class="container" data-aos="fade-up">
           <div class="section-title">
@@ -461,74 +389,36 @@
 
           </div>
           <div class="row">
-            <div class="col-xl-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-              <div class="card">
-                <img class="card-img"
-                  src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/pasta.jpg"
-                  alt="Bologna">
-                <div class="card-body">
-                  <h4 class="card-title">Pasta with Prosciutto</h4>
-                  <p class="card-text">I love quick, simple pasta dishes, and this is one of my favorite.</p>
-                  <a href="BlogInner.html" class="btn btn-info">Read More</a>
-                </div>
-                <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
-                  <div class="views">Oct 20, 12:45PM
-                  </div>
-                  <div class="stats">
-                    <i class="far fa-eye"></i> 1347
-                    <i class="far fa-comment"></i> 12
-                  </div>
+                @foreach ($blogs as $blog)
+                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mb-4" data-aos="zoom-in" data-aos-delay="100">
+                    <a href="{{ url('blog') }}/{{ $blog->slug }}">
+                      <div class="card">
+                        <img class="card-img"
+                          src="{{ get_storage_location() }}/{{ $blog->image }}"
+                          alt="{{$blog->title }}">
+                        <div class="card-body ">
+                          <h4 class="card-title">{{ $blog->title }}</h4>
+                          <div class="blog-row text-secondary">
+                            <i class="fas fa-calendar-alt"></i>&nbsp;&nbsp;
+                            {{ formated_date($blog->created_at) }}
+                            <i class="fas fa-briefcase ms-4 "></i>&nbsp;&nbsp;
+                            {{ $blog->category }}
+                          </div>
+                          <p class="card-text text-secondary mt-2 mb-1">
+                              {{ $blog->blog_intro }}
+                          </p>
+                          <a href="{{ url('blog') }}/{{ $blog->slug }}" class="read-more">Read More</a>
+                        </div>
 
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-              data-aos-delay="200">
-              <div class="card">
-                <img class="card-img"
-                  src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/pasta.jpg"
-                  alt="Bologna">
-                <div class="card-body">
-                  <h4 class="card-title">Pasta with Prosciutto</h4>
-                  <p class="card-text">I love quick, simple pasta dishes, and this is one of my favorite.</p>
-                  <a href="BlogInner.html" class="btn btn-info">Read More</a>
-                </div>
-                <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
-                  <div class="views">Oct 20, 12:45PM
+                      </div>
+                    </a>
                   </div>
-                  <div class="stats">
-                    <i class="far fa-eye"></i> 1347
-                    <i class="far fa-comment"></i> 12
-                  </div>
-
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-              data-aos-delay="200">
-              <div class="card">
-                <img class="card-img"
-                  src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/pasta.jpg"
-                  alt="Bologna">
-                <div class="card-body">
-                  <h4 class="card-title">Pasta with Prosciutto</h4>
-                  <p class="card-text">I love quick, simple pasta dishes, and this is one of my favorite.</p>
-                  <a href="BlogInner.html" class="btn btn-info">Read More</a>
-                </div>
-                <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
-                  <div class="views">Oct 20, 12:45PM
-                  </div>
-                  <div class="stats">
-                    <i class="far fa-eye"></i> 1347
-                    <i class="far fa-comment"></i> 12
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
+                @endforeach
+            @else
         </div>
-      </Section>
+    </div>
+</Section>
+@endif
       <!-- ======= End Blog ======= -->
       <!-- ======= Frequently Asked Questions Section ======= -->
       <section id="faq" class="faq section-bg">

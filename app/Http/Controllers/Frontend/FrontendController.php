@@ -12,6 +12,7 @@ use App\Models\Faq;
 use App\Models\Newsletter;
 use App\Models\Portfolio;
 use App\Models\Script;
+use App\Models\Service;
 use App\Models\Teams;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
@@ -26,10 +27,18 @@ class FrontendController extends BaseController
         // all
         $faq = (new Faq)->getCategory('home');
         $script = Script::all();
+
+        $clients = Portfolio::take(6)->get();
+        $blogs = Blog::where('featured', 1)->orderBy('id', 'desc')->take(4)->get();
+        $services = Service::where('status', 1)->orderBy('id', 'desc')->take(4)->get();
+
         return view('frontend.index', [
             'portfolio' => $portfolio,
             'faq' => $faq,
             'script' => $script,
+            'clients' => $clients,
+            'blogs' => $blogs,
+            'services' => $services,
         ]);
     }
 
@@ -233,5 +242,34 @@ class FrontendController extends BaseController
     protected function sendContactEmail($store)
     {
         dispatch(new SendContactMail($store));
+    }
+
+
+    public function aboutus()
+    {
+        $service  = Service::all();
+        return view('frontend.pages.about', compact('service'));
+    }
+
+    public function services()
+    {
+        $services = Service::where('status', 1)->get();
+        return view('frontend.pages.service.index', compact('services'));
+    }
+
+    public function serviceDetails($slug)
+    {
+        $service = Service::where('slug', $slug)->first();
+        return view('frontend.pages.service.details', compact('service'));
+    }
+
+    public function products()
+    {
+        return view('frontend.pages.product.index');
+    }
+
+    public function productDetails()
+    {
+        return view('frontend.pages.product.details');
     }
 }

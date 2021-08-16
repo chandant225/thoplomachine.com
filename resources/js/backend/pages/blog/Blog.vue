@@ -25,6 +25,15 @@
                 <label>Blog Title</label>
                 <input class="form-control" type="text" v-model="form.title" placeholder="Title" />
             </div>
+             <div class="form-group">
+                    <label>Blog Introduction</label>
+                    <textarea
+                        class="form-control"
+                        v-model="form.blogIntro"
+                        rows="4"
+                        placeholder="Blog intro text"
+                    ></textarea>
+                </div>
             <div class="form-group">
                 <label class="font-weight-bold ">Featured mage</label>
                 <input
@@ -123,7 +132,8 @@
             </div>
 
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1" v-model="form.isFeatured">
+                <input type="checkbox" class="custom-control-input" id="customCheck1" v-model="form.isFeatured"  true-value="true"
+  false-value="false">
                 <label class="custom-control-label" for="customCheck1">is featured ?</label>
             </div>
 
@@ -147,7 +157,7 @@
 
         <!--   lisiting table     -->
         <div class="listing-table p-3 shadow" v-if="!showAddForm">
-            <section>
+            <!-- <section>
                 <div class="search-bar">
                     <div class="row justify-content-between">
                         <div class="form-group col-3">
@@ -205,7 +215,7 @@
                 </div>
             </section>
 
-            <p class="font-weight-bold">Total : {{ total }}</p>
+            <p class="font-weight-bold">Total : {{ total }}</p> -->
 
             <section>
                 <b-table
@@ -268,7 +278,7 @@
                     <label class="font-weight-bold"
                         >{{ currentPage }} / {{ lastPage }}
                     </label>
-                    <label class="font-weight-bold">Total : {{ total }}</label>
+                    <label class="font-weight-bold">Total Items: {{ total }}</label>
                 </div>
             </section>
         </div>
@@ -307,6 +317,7 @@ export default {
                 metaDescription: "",
                 meta_tags: "",
                 isFeatured: false,
+                blogIntro: '',
             },
 
             items: [],
@@ -328,10 +339,6 @@ export default {
                 {
                     key: "created_at",
                     label: "Created At"
-                },
-                {
-                    key: "updated_at",
-                    label: "Updated At"
                 },
 
                 "Action"
@@ -407,11 +414,13 @@ export default {
             formData.append("category", this.form.category);
             formData.append("written_by", this.form.written_by);
             formData.append("prev_image", this.form.prevImages);
-            // meta
+
             formData.append("meta_title", this.form.metaTitle);
             formData.append("meta_description", this.form.metaDescription);
             formData.append("meta_tags", this.form.metaTags);
+
             formData.append("is_featured", this.form.isFeatured);
+            formData.append("blog_intro", this.form.blogIntro);
 
             const config = {
                 "content-type": "multipart/form-data"
@@ -503,7 +512,7 @@ export default {
         },
 
         previewEditItem(data) {
-            // console.log(data);
+
             window.scrollTo(0, 0);
             this.formState = "update";
             this.demoImage = [];
@@ -519,6 +528,8 @@ export default {
 
             this.form.category = data.category;
             this.form.written_by = data.written_by;
+            this.form.blogIntro = data.blog_intro;
+            this.form.isFeatured = data.featured === 1 ? true : false;
 
             //previous image show
             const prev_image = data.image;

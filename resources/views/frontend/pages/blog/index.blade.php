@@ -32,7 +32,7 @@
                           src="{{ get_storage_location() }}/{{ $blog->image }}"
                           alt="{{$blog->title }}">
                         <div class="card-body ">
-                          <h4 class="card-title">Pasta with Prosciutto</h4>
+                          <h4 class="card-title">{{ $blog->title }}</h4>
                           <div class="blog-row text-secondary">
                             <i class="fas fa-calendar-alt"></i>&nbsp;&nbsp;
                             {{ formated_date($blog->created_at) }}

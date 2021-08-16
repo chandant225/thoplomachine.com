@@ -58,6 +58,7 @@ class BlogController extends BaseController
         ]);
 
         if ($request->hasfile('image')) {
+
             $i = Storage::disk('public')->put('blogs', $request->image[0]);
             $store = new Blog();
             $slugify = new Slugify();
@@ -68,7 +69,8 @@ class BlogController extends BaseController
             $store->description = $request->description;
             $store->written_by = $request->written_by;
             $store->image = $i;
-            $store->featured = $request->is_featured == true ? '1'  : '0';
+            $store->blog_intro = $request->blog_intro;
+            $store->featured = $request->is_featured == 'true' ? '1'  : '0';
             $store->meta_tags = $request->meta_tags;
             $store->meta_description = $request->meta_description;
             $store->meta_title = $request->meta_title;
@@ -124,6 +126,9 @@ class BlogController extends BaseController
         $store->meta_tags = $request->meta_tags;
         $store->meta_description = $request->meta_description;
         $store->meta_title = $request->meta_title;
+
+        $store->blog_intro = $request->blog_intro;
+        $store->featured = $request->is_featured == 'true' ? '1'  : '0';
 
         $store->update();
         if ($store) {

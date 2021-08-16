@@ -30,7 +30,7 @@
 
           <div class="row content">
             <div class="col-lg-6   about-img" data-aos="zoom-in" data-aos-delay="200">
-              <img src="assets/img/about-us.png" class="img-fluid animated" alt="">
+              <img src="{{ asset('assets/frontend/img/about-us.png') }}" class="img-fluid animated" alt="">
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0">
               <p>

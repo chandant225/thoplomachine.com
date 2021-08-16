@@ -79,7 +79,7 @@
           <div class="col-md-6 p-3 bg-light text-center">
             <h1 class=" ">Get In Touch With Us</h1>
             <h5 class="text-secondary ">Anything On your Mind. We’ll Be Glad To Assist You!</h5>
-            <img src="./assets/img/undraw_Envelope_re_f5j4.svg" width="80%" height="100%" alt="">
+            <img src="{{ asset('assets/frontend/img/undraw_Envelope_re_f5j4.svg') }}" width="80%" height="100%" alt="">
           </div>
           <div class="col-md-6">
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
