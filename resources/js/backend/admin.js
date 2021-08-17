@@ -10,13 +10,13 @@ Vue.component("blog-component", require("./pages/blog/Blog.vue").default);
 Vue.component("blog-category-component", require("./pages/blog/Category.vue").default);
 // portfolio
 Vue.component("portfolio-component", require("./pages/portfolio/Portfolio.vue").default);
-Vue.component(
-    "portfolio-category-component",
-    require("./pages/portfolio/category.vue").default
-);
+// Vue.component(
+//     "portfolio-category-component",
+//     require("./pages/portfolio/category.vue").default
+// );
 
 Vue.component("faq-component", require("./pages/faq/faq.vue").default);
-Vue.component("faq-category-component", require("./pages/faq/category.vue").default);
+// Vue.component("faq-category-component", require("./pages/faq/category.vue").default);
 // services
 Vue.component("service-component", require("./pages/service/Service.vue").default);
 Vue.component(

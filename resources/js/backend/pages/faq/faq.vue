@@ -2,46 +2,34 @@
     <div class="blog col-12 p2">
         <loading v-if="isLoading"></loading>
 
-        <FlashMessage></FlashMessage>
+        <div class="row mb-4">
+                <div class="col-md-12">
+                    <div class="float-left">
+                            <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" @click="toggleForm">
+                                <i class="fas fa-plus fa-sm text-white"></i> Add New FAQ
+                            </button>
+                    </div>
 
-        <div class="blog-title col-12 mb-5 ">
-            <div class="row">
-                <h4 class="pr-3">Faq</h4>
-                <button class="btn btn-sm btn-primary" @click="toggleForm">
-                    <i class="fa fa-plus"></i>
-                </button>
+                    <!-- <div class="float-right">
+                        <input class="form-control mr-sm-2" v-model="search" type="search" placeholder="Search Blog..." aria-label="Search" v-if="!showAddForm">
+                    </div> -->
+                </div>
             </div>
-        </div>
 
         <!--add form -->
         <div class="add-blog row mb-5 shadow p-3 " v-if="showAddForm">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <label>Title</label>
                 <input
                     class="form-control"
                     type="text"
                     v-model="form.title"
-                    placeholder="<h1> Title </h1>"
+                    placeholder="Question"
                 />
             </div>
 
-            <div class="form-group col-md-6">
-                <label>
-                    Category
-                </label>
-                <select class="form-control" v-model="form.category">
-                    <option
-                        :value="c.id"
-                        v-for="c in categorylist"
-                        :key="c.index"
-                    >
-                        {{ c.category }}
-                    </option>
-                </select>
-            </div>
-
             <div class="form-group col-12">
-                <label>Description</label>
+                <label>Answer</label>
                 <textarea
                     class="form-control"
                     v-model="form.description"
@@ -56,84 +44,24 @@
             </div>
             <div class="modal-footer">
                 <button
-                    type="button"
-                    class="btn btn-sm btn-secondary"
-                    @click="hideForm"
-                >
-                    Close
-                </button>
-                <button
                     type="submit"
                     class="btn btn-sm btn-primary"
                     @click="submitForm"
                 >
                     Submit
                 </button>
+                <button
+                    type="button"
+                    class="btn btn-sm btn-secondary"
+                    @click="hideForm"
+                >
+                    Close
+                </button>
             </div>
         </div>
 
         <!--   lisiting table     -->
-        <div class="listing-table p-3 shadow">
-            <section>
-                <div class="search-bar">
-                    <div class="row justify-content-between">
-                        <div class="form-group col-3">
-                            <div class="row">
-                                <label class="col-4">Sort By :</label>
-                                <select
-                                    class="form-control form-control-sm col-8"
-                                    v-model="sortBy"
-                                    @change="getData"
-                                >
-                                    <option value="all">All</option>
-                                    <option
-                                        :value="si.id"
-                                        v-for="si in categorylist"
-                                        :key="si.index"
-                                        >{{ si.category }}</option
-                                    >
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row col-9 mr-2 justify-content-end">
-                            <div class="form-group">
-                                <label>Search By :</label>
-                            </div>
-                            <div class="form-group col-2">
-                                <select
-                                    class="form-control form-control-sm"
-                                    v-model="searchBy"
-                                >
-                                    <option
-                                        :value="si"
-                                        v-for="si in searchItems"
-                                        :key="si.index"
-                                        >{{ si }}</option
-                                    >
-                                </select>
-                            </div>
-                            <div class="form-group col-3">
-                                <input
-                                    class="form-control form-control-sm"
-                                    type="text"
-                                    v-model="Keywords"
-                                    placeholder="Search Keywords"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <button
-                                    class="btn btn-sm  btn-secondary"
-                                    @click="getData"
-                                >
-                                    Search
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <p class="font-weight-bold">Total : {{ total }}</p>
+        <div class="listing-table p-3 shadow" v-if="!showAddForm">
 
             <section>
                 <b-table
@@ -141,7 +69,7 @@
                     :items="items"
                     :fields="fields"
                     responsive="sm"
-                    thead-class="bg-secondary text-light"
+                    thead-class="text-dark"
                     striped
                 >
                     <template #cell(SN)="items">
@@ -179,7 +107,7 @@
                     <label class="font-weight-bold"
                         >{{ currentPage }} / {{ lastPage }}
                     </label>
-                    <label class="font-weight-bold">Total : {{ total }}</label>
+                    <label class="font-weight-bold">Total Items: {{ total }}</label>
                 </div>
             </section>
         </div>
@@ -204,8 +132,7 @@ export default {
             formState: "save",
             form: {
                 title: "",
-                description: "lklkl",
-                category: [],
+                description: "",
                 editId: ""
             },
             items: [],
@@ -214,11 +141,6 @@ export default {
                 {
                     key: "title",
                     label: "title"
-                },
-
-                {
-                    key: "category",
-                    label: "Category"
                 },
 
                 "Action"
@@ -244,7 +166,6 @@ export default {
     mounted() {},
     created() {
         this.getData();
-        this.getCategoryData();
     },
     methods: {
         getData(page = 1) {
@@ -288,7 +209,6 @@ export default {
             formData.append("id", this.form.editId);
             formData.append("title", this.form.title);
             formData.append("description", this.form.description);
-            formData.append("category", this.form.category);
             const config = {
                 "content-type": "multipart/form-data"
             };
@@ -299,19 +219,23 @@ export default {
                     .then(response => {
                         var response = response.data;
                         if (response.status === true) {
-                            this.flashMessage.success({
-                                title: "Success",
-                                message: response.message
-                            });
+                           Vue.$toast.open({
+                                message: response.message,
+                                type: 'success',
+                                position: 'top-right'
+                                // all of other options may go here
+                        });
                             //hide form
                             this.getData();
                             this.showAddForm = false;
                             this.resetForm();
                         } else {
-                            this.flashMessage.warning({
-                                title: "Failed",
-                                message: response.message
-                            });
+                            Vue.$toast.open({
+                                message: response.message,
+                                type: 'error',
+                                position: 'top-right'
+                                // all of other options may go here
+                        });
                         }
                     })
                     .catch(error => {
@@ -327,19 +251,23 @@ export default {
                     .then(response => {
                         var response = response.data;
                         if (response.status == true) {
-                            this.flashMessage.success({
-                                title: "Success",
-                                message: response.message
-                            });
+                            Vue.$toast.open({
+                                message: response.message,
+                                type: 'success',
+                                position: 'top-right'
+                                // all of other options may go here
+                        });
                             //hide form
                             this.getData();
                             this.showAddForm = false;
                             this.resetForm();
                         } else {
-                            this.flashMessage.warning({
-                                title: "Failed",
-                                message: response.message
-                            });
+                           Vue.$toast.open({
+                                message: response.message,
+                                type: 'error',
+                                position: 'top-right'
+                                // all of other options may go here
+                        });
                         }
                     })
                     .catch(error => {
@@ -357,7 +285,6 @@ export default {
                 this.showAddForm = false;
             } else {
                 this.showAddForm = true;
-                this.getCategoryData();
                 this.resetForm();
                 this.formState = "save";
             }
@@ -374,7 +301,6 @@ export default {
             this.form.editId = data.id;
             this.form.title = data.title;
             this.form.description = data.description;
-            this.form.category = "";
 
             this.showAddForm = true;
         },

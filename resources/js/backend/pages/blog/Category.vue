@@ -38,10 +38,10 @@
                 </button>
                 <button
                     type="button"
-                    class="btn btn-sm btn-success"
+                    class="btn btn-sm btn-primary"
                     @click="submitForm"
                 >
-                    <label v-if="formState == 'save'">Upload</label>
+                    <label v-if="formState == 'save'">save</label>
                     <label v-else>Update</label>
                 </button>
             </div>

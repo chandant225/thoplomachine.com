@@ -25,7 +25,6 @@ class FrontendController extends BaseController
         // dd(URL::current());
         $portfolio = Portfolio::orderBy('id', 'desc')->take(4)->get();
         // all
-        $faq = (new Faq)->getCategory('home');
         $script = Script::all();
 
         $clients = Portfolio::take(6)->get();
@@ -34,7 +33,6 @@ class FrontendController extends BaseController
 
         return view('frontend.index', [
             'portfolio' => $portfolio,
-            'faq' => $faq,
             'script' => $script,
             'clients' => $clients,
             'blogs' => $blogs,
@@ -68,13 +66,9 @@ class FrontendController extends BaseController
     // portfolio details page--------------------------------------
     public function portfolioPage()
     {
-        $faq = (new Faq)->getCategory('portfolio');
         $script = Script::all();
 
-        return view('frontend_pages.portfolio', [
-            'faq' => $faq,
-
-        ]);
+        return view('frontend_pages.portfolio');
     }
 
     // thankyou page--------------------------------------
@@ -104,7 +98,6 @@ class FrontendController extends BaseController
     public function blogCategory($cat)
     {
         $category = BlogCategory::all();
-        $faq = (new Faq)->getCategory('blog');
         $script = Script::all();
 
         $blogs = Blog::where('category', $cat)->orderBy('id', 'desc')->paginate(1);
@@ -112,7 +105,6 @@ class FrontendController extends BaseController
             'blogs' => $blogs,
             'cat' => $cat,
             'category' => $category,
-            'faq' => $faq,
             'script' => $script,
         ]);
     }
@@ -183,13 +175,11 @@ class FrontendController extends BaseController
     // Our Teams page
     public function ourTeam()
     {
-        $faq = (new Faq)->getCategory('about');
         $teams = Teams::all();
         $script = Script::all();
 
         return view('frontend.pages.our-teams', [
             'teams' => $teams,
-            'faq' => $faq,
             'script' => $script,
         ]);
     }

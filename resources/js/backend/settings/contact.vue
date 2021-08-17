@@ -1,81 +1,16 @@
 <template>
     <div class="blog col-12 p2">
-        <div class="flash">
-            <FlashMessage></FlashMessage>
-        </div>
-
         <loading v-if="isLoading"></loading>
 
         <!--   lisiting table     -->
         <div class="listing-table p-3 shadow">
-            <div class="row justify-content-end p-3">
-                <small v-if="sortBy != 'all'" class="text-info">
-                    set [ Sort by -> All ] to search
-                </small>
-            </div>
-            <div class="search-bar">
-                <div class="row justify-content-between">
-                    <div class="form-group col-3">
-                        <div class="row">
-                            <label class="col-4">Sort By :</label>
-                            <select
-                                class="form-control form-control-sm col-8"
-                                v-model="sortBy"
-                                @change="getData"
-                            >
-                                <option value="all">All</option>
-                                <option value="is_seen">Seen Message</option>
-                                <option value="is_not_seen"
-                                    >Unseen Message</option
-                                >
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row col-9 mr-2 justify-content-end">
-                        <div class="form-group">
-                            <label>Search By :</label>
-                        </div>
-                        <div class="form-group col-2">
-                            <select
-                                class="form-control form-control-sm"
-                                v-model="searchBy"
-                            >
-                                <option
-                                    :value="si"
-                                    v-for="si in searchItems"
-                                    :key="si.index"
-                                    >{{ si }}</option
-                                >
-                            </select>
-                        </div>
-                        <div class="form-group col-3">
-                            <input
-                                class="form-control form-control-sm"
-                                type="text"
-                                v-model="Keywords"
-                                placeholder="Search Keywords"
-                            />
-                        </div>
-                        <div class="form-group">
-                            <button
-                                class="btn btn-sm  btn-secondary"
-                                @click="getData"
-                            >
-                                Search
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <p class="font-weight-bold">Total Contacts : {{ total }}</p>
 
             <b-table
                 id="my-table"
                 :items="items"
                 :fields="fields"
                 responsive="sm"
-                thead-class="bg-secondary text-light"
+                thead-class="text-dark"
                 striped
             >
                 <template #cell(SN)="items">
@@ -98,7 +33,7 @@
                         class="btn btn-primary btn-sm"
                         @click.stop="updateContact(data.item.id)"
                     >
-                        <i class="fa fa-check"></i>
+                        <i class="fa fa-eye"></i>
                     </button>
                 </template>
             </b-table>
@@ -195,16 +130,20 @@ export default {
         updateContact(id) {
             axios.get("/admin/set-seen/contact/" + id).then(response => {
                 if (response.data.status == true) {
-                    this.flashMessage.success({
-                        title: "Success",
-                        message: response.data.message
-                    });
+                    Vue.$toast.open({
+                                message: response.data.message,
+                                type: 'success',
+                                position: 'top-right'
+                                // all of other options may go here
+                        });
                     this.getData();
                 } else {
-                    this.flashMessage.success({
-                        title: "Error",
-                        message: response.data.message
-                    });
+                     Vue.$toast.open({
+                                message: response.data.message,
+                                type: 'error',
+                                position: 'top-right'
+                                // all of other options may go here
+                        });
                 }
             });
         },

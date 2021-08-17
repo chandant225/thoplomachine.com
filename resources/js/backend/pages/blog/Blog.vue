@@ -3,8 +3,6 @@
 
         <loading v-if="isLoading"></loading>
 
-        <FlashMessage></FlashMessage>
-
          <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="float-left">
@@ -433,19 +431,23 @@ export default {
                         var response = response.data;
                         console.log(response);
                         if (response.status === true) {
-                            this.flashMessage.success({
-                                title: "Success",
-                                message: response.message
-                            });
+                            Vue.$toast.open({
+                                message: response.message,
+                                type: 'success',
+                                position: 'top-right'
+                                // all of other options may go here
+                        });
                             //hide form
                             this.getData();
                             this.showAddForm = false;
                             this.resetForm();
                         } else {
-                            this.flashMessage.warning({
-                                title: "Failed",
-                                message: response.message
-                            });
+                            Vue.$toast.open({
+                                message: response.message,
+                                type: 'error',
+                                position: 'top-right'
+                                // all of other options may go here
+                        });
                         }
                     })
                     .catch(error => {
@@ -461,19 +463,23 @@ export default {
                     .then(response => {
                         var response = response.data;
                         if (response.status == true) {
-                            this.flashMessage.success({
-                                title: "Success",
-                                message: response.message
-                            });
+                            Vue.$toast.open({
+                                message: response.message,
+                                type: 'success',
+                                position: 'top-right'
+                                // all of other options may go here
+                        });
                             //hide form
                             this.getData();
                             this.showAddForm = false;
                             this.resetForm();
                         } else {
-                            this.flashMessage.warning({
-                                title: "Failed",
-                                message: response.message
-                            });
+                           Vue.$toast.open({
+                                message: response.message,
+                                type: 'error',
+                                position: 'top-right'
+                                // all of other options may go here
+                        });
                         }
                     })
                     .catch(error => {

@@ -16,29 +16,14 @@ class ContactController extends BaseController
      */
     public function index()
     {
-        $map = Asset::take(1)->where('type', 'map')->get();
-        return view('admin_pages.settings.contact', [
-            'map' => $map,
-        ]);
+        return view('admin.pages.contacts');
     }
 
     public function getAllContacts(Request $request)
     {
         //dd($request);
-        if ($request->sort_by == 'is_seen') {
-            $contact = Contact::where('is_seen', '=', 1)->orderBy('id', 'desc')->paginate(10);
-        } elseif ($request->sort_by == 'is_not_seen') {
-            $contact = Contact::where('is_seen', '=', 0)->orderBy('id', 'desc')->paginate(10);
-        } else {
-            if ($request->keywords !== '') {
-                $key = $request->keywords;
-                $searchBy = $request->search_by;
-                $contact = Contact::where($searchBy, 'like', '%' . $key . '%')->orderBy('id', 'desc')->paginate(10);
-            } else {
-                $contact = Contact::orderBy('id', 'desc')->paginate(10);
-            }
 
-        }
+        $contact = Contact::orderBy('id', 'desc')->paginate(10);
         return json_encode($this->reportSuccess('Data retrived successfully', $contact));
     }
 

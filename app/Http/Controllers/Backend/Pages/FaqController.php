@@ -18,7 +18,7 @@ class FaqController extends BaseController
      */
     public function index()
     {
-        return view('admin_pages.settings.faq');
+        return view('admin.pages.faq');
     }
 
     public function getAllFaq(Request $request)
@@ -28,15 +28,12 @@ class FaqController extends BaseController
             $key = $request->keywords;
             $searchBy = $request->search_by;
             $get = Faq::orderBy('faqs.id', 'desc')
-                ->join('faq_categories', 'faq_categories.id', '=', 'faqs.cat_id')
-                ->select('faq_categories.category', 'faqs.*')
+                ->select('faqs.*')
                 ->where($searchBy, 'like', '%' . $key . '%')
                 ->paginate(10);
         } else {
             $get = Faq::orderBy('faqs.id', 'desc')
-                ->where('faqs.cat_id', $request->sort_by)
-                ->join('faq_categories', 'faq_categories.id', '=', 'faqs.cat_id')
-                ->select('faq_categories.category', 'faqs.*')
+                ->select('faqs.*')
                 ->paginate(10);
 
         }
@@ -53,17 +50,15 @@ class FaqController extends BaseController
         // dd($request->all());
         $validation = $request->validate([
             'title' => 'required|string',
-            'category' => 'required',
             'description' => 'required|string',
         ]);
 
         $store = new Faq();
-        $slugify = new Slugify();
-        $store->slug = $slugify->slugify($request->title);
         $store->title = $request->title;
-        $store->cat_id = $request->category;
+
         $store->description = $request->description;
         $store->save();
+
         if ($store) {
             return json_encode($this->reportSuccess('Faq added successfully'));
 
@@ -87,17 +82,13 @@ class FaqController extends BaseController
 
         $validate = $request->validate([
             'title' => 'required|string',
-            'category' => 'required|string',
             'description' => 'required|string',
         ]);
 
         $id = $request->id;
 
         $store = Faq::find($id);
-        $slugify = new Slugify();
-        $store->slug = $slugify->slugify($request->title);
         $store->title = $request->title;
-        $store->cat_id = $request->category;
         $store->description = $request->description;
         $store->update();
         if ($store) {
