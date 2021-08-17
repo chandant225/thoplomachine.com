@@ -80,7 +80,7 @@ class FrontendController extends BaseController
     // thankyou page--------------------------------------
     public function thankyou()
     {
-        return view('frontend_pages.thankyou');
+        return view('frontend.pages.thank-you');
     }
 
     // blog-------------------------------------------
@@ -228,13 +228,13 @@ class FrontendController extends BaseController
         $store->message = $request->message;
         $store->save();
 
-        $this->sendContactEmail($store);
+        // $this->sendContactEmail($store);
 
         if ($store) {
-            return json_encode($this->reportSuccess('Message sent Successfully. Our team will contact you soon.'));
+            return redirect('/thank-you');
 
         } else {
-            return json_encode($this->reportError('Message send failed. Please try again'));
+            return response()->with(['error' => 'Failed. Please try again.']);
         }
 
     }

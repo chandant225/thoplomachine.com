@@ -82,24 +82,71 @@
             <img src="{{ asset('assets/frontend/img/undraw_Envelope_re_f5j4.svg') }}" width="80%" height="100%" alt="">
           </div>
           <div class="col-md-6">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="{{ url('save-contact') }}" method="POST" role="form" class="php-email-form">
+                @csrf
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
+                    <label for="name">Your Name</label>
+                    <input type="text" name="name" placeholder="Your Name"
+                        class="form-control @error('name') is-invalid @enderror"
+                        value="{{ old('name') }}" required>
+
+                    @error('name')
+
+                    <div class="invalid-feedback" style="display:block">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
+                    <label for="email">Your Email</label>
+                    <input type="text" name="email" placeholder="Your email address"
+                        class="form-control @error('email') is-invalid @enderror"
+                        value="{{ old('email') }}" required>
+                    @error('email')
+
+                    <div class="invalid-feedback" style="display:block">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
+              </div>
+              <div class="form-group">
+                <label for="phone">Your Phone</label>
+                <input type="text" name="phone" placeholder="Your phone number"
+                    class="form-control @error('phone') is-invalid @enderror"
+                    value="{{ old('phone') }}" required>
+                @error('phone')
+
+                <div class="invalid-feedback" style="display:block">
+                    {{ $message }}
+                </div>
+                @enderror
               </div>
               <div class="form-group">
                 <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
+                                    <input type="text" name="subject" placeholder="Your Subject"
+                                        class="form-control @error('subject') is-invalid @enderror"
+                                        value="{{ old('subject') }}" required>
+
+                                    @error('subject')
+
+                                    <div class="invalid-feedback" style="display:block">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
               </div>
               <div class="form-group">
                 <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="8" required></textarea>
+                <textarea name="message" cols="30" rows="5" placeholder="Write your message..."
+                    class="form-control @error('message') is-invalid @enderror"
+                    required>{{ old('message') }}</textarea>
+                @error('message')
+
+                <div class="invalid-feedback" style="display:block">
+                    {{ $message }}
+                </div>
+                @enderror
               </div>
               <div class="text-center mt-3"><button type="submit">Send Message</button></div>
             </form>
