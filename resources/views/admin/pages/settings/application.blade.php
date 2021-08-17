@@ -68,6 +68,41 @@
             </div>
 
             <div class="form-group">
+                <label for="facebook">Facebook</label>
+                <input type="hidden" name="types[]" value="facebook">
+                <input type="text" class="form-control" id="facebook" name="facebook" placeholder="Enter facebook link"
+                    value="{{ get_setting('facebook') }}">
+            </div>
+
+            <div class="form-group">
+                <label for="twitter">twitter</label>
+                <input type="hidden" name="types[]" value="twitter">
+                <input type="text" class="form-control" id="twitter" name="twitter" placeholder="Enter twitter link"
+                    value="{{ get_setting('twitter') }}">
+            </div>
+
+            <div class="form-group">
+                <label for="skype">Skype</label>
+                <input type="hidden" name="types[]" value="skype">
+                <input type="text" class="form-control" id="skype" name="skype" placeholder="Enter skype link"
+                    value="{{ get_setting('skype') }}">
+            </div>
+
+            <div class="form-group">
+                <label for="instagram">Instagram</label>
+                <input type="hidden" name="types[]" value="instagram">
+                <input type="text" class="form-control" id="instagram" name="instagram" placeholder="Enter instagram link"
+                    value="{{ get_setting('instagram') }}">
+            </div>
+
+            <div class="form-group">
+                <label for="linkedin">Linked in</label>
+                <input type="hidden" name="types[]" value="linkedin">
+                <input type="text" class="form-control" id="linkedin" name="linkedin" placeholder="Enter linkedin link"
+                    value="{{ get_setting('linkedin') }}">
+            </div>
+
+            <div class="form-group">
                 <label for="seo_title">Seo title</label>
                 <input type="hidden" name="types[]" value="seo_title">
                 <input type="text" class="form-control" id="seo_title" name="seo_title" placeholder="Enter Seo Title"

@@ -23,7 +23,7 @@
             <a href="{{ url('/') }}" ><img src="{{ URL::asset('storage/') }}/{{ get_setting('app_logo') }}" alt="{{ env('APP_NAME') }}" class="img-fluid mb-4 img-fit"></a>
         @else
 
-        <h1 class="logo me-auto text-white"><a href="{{ url('/') }}"></a>Tmachine</h1>
+        <h1 class="logo me-auto text-dark"><a href="{{ url('/') }}"></a>Tmachine</h1>
         @endif
             <br>
             <p>
@@ -38,10 +38,12 @@
             <h4>Useful Links</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/') }}">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              {{-- <li><i class="bx bx-chevron-right"></i> <a href="{{ url() }}">About us</a></li> --}}
+              @if(count($pages) > 0)
+                @foreach ($pages as $page)
+                    <li><i class="bx bx-chevron-right"></i> <a href="{{ url($page->slug) }}">{{ $page->title }}</a></li>
+                @endforeach
+              @endif
             </ul>
           </div>
 
@@ -63,11 +65,11 @@
             <h4>Our Social Networks</h4>
             {{-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> --}}
             <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              <a href="{{ get_setting('twitter') }}" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="{{ get_setting('facebook') }}" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="{{ get_setting('instagram') }}" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="{{ get_setting('skype') }}" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="{{ get_setting('linkedin') }}" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
           </div>
 

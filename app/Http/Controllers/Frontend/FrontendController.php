@@ -10,6 +10,7 @@ use App\Models\BlogCategory;
 use App\Models\Contact;
 use App\Models\Faq;
 use App\Models\Newsletter;
+use App\Models\Page;
 use App\Models\Portfolio;
 use App\Models\Script;
 use App\Models\Service;
@@ -31,6 +32,7 @@ class FrontendController extends BaseController
         $blogs = Blog::where('featured', 1)->orderBy('id', 'desc')->take(4)->get();
         $services = Service::where('status', 1)->orderBy('id', 'desc')->take(4)->get();
         $faqs = Faq::orderBy('id', 'desc')->take(4)->get();
+        $pages = Page::orderBy('id', 'desc')->take(6)->get();
 
         return view('frontend.index', [
             'portfolio' => $portfolio,
@@ -39,6 +41,7 @@ class FrontendController extends BaseController
             'blogs' => $blogs,
             'services' => $services,
             'faqs' => $faqs,
+            'pages' => $pages,
         ]);
     }
 
