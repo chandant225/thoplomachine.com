@@ -133,6 +133,12 @@ Route::group(['middleware' => ['auth'], 'prefix' =>'admin'], function () {
     Route::get('get-all-service-name', [App\Http\Controllers\Backend\Pages\Service\ServiceController::class, 'getAllServiceName']);
     Route::post('service/update', [App\Http\Controllers\Backend\Pages\Service\ServiceController::class, 'updateService']);
 
+    //Pages ---------------------------------------------------------------------------------
+
+     Route::resource('pages', App\Http\Controllers\Backend\PagesController::class)->only(['index', 'store', 'destroy']);
+     Route::post('pages/update', [App\Http\Controllers\Backend\PagesController::class, 'updatePage']);
+     Route::post('get-all-pages', [App\Http\Controllers\Backend\PagesController::class, 'getAll']);
+
     // services category
     Route::post('category/service/store', [App\Http\Controllers\Backend\Pages\Service\ServiceController::class, 'catStore']);
     Route::delete('category/service/delete/{id}', [App\Http\Controllers\Backend\Pages\Service\ServiceController::class, 'catDelete']);

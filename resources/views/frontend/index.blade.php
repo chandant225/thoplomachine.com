@@ -421,76 +421,33 @@
 @endif
       <!-- ======= End Blog ======= -->
       <!-- ======= Frequently Asked Questions Section ======= -->
-      <section id="faq" class="faq section-bg">
-        <div class="container" data-aos="fade-up">
+      @if (count($faqs) > 0)
 
-          <div class="section-title">
-            <h2>AI and IoT Automation FAQ's</h2>
-          </div>
+          <section id="faq" class="faq section-bg">
+            <div class="container" data-aos="fade-up">
 
-          <div class="faq-list">
-            <ul>
-              <li data-aos="fade-up" data-aos-delay="100">
-                <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse"
-                  data-bs-target="#faq-list-1">What are IoT devices? <i class="bx bx-chevron-down icon-show"></i><i
-                    class="bx bx-chevron-up icon-close"></i></a>
-                <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                  <p>
-                    IoT devices are smart devices that are connected wirelessly to the network such as sensors, actuators,
-                    gadgets, appliances or machines, and are capable of transmitting data over the internet or other
-                    networks. With the feature of super connectivity, these devices are capable of communicating and
-                    interacting over the internet.
-                  </p>
-                </div>
-              </li>
+              <div class="section-title">
+                <h2>AI and IoT Automation FAQ's</h2>
+              </div>
 
-              <li data-aos="fade-up" data-aos-delay="200">
-                <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2"
-                  class="collapsed">Why do we need IoT and automated devices?<i
-                    class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    The world has been managed to take leaps and humanity has thrived due to the incorporation of AI. AI
-                    has transformed life by automating everyday tasks and has been able to make some revolutionary changes
-                    through predictive and intuitive personal digital assistants, autonomous vehicles, and smart
-                    algorithms that are able to predict human behavior and their routine response patterns. Basically, AI
-                    has managed to ease tasks by making everything simpler.
-                  </p>
-                </div>
-              </li>
+              <div class="faq-list">
+                <ul>
+                    @foreach ($faqs as $key=>$faq )
 
-              <li data-aos="fade-up" data-aos-delay="300">
-                <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3"
-                  class="collapsed">How A.I Is Changing our life as we know it?<i
-                    class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum
-                    integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt.
-                    Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi
-                    quis
-                  </p>
-                </div>
-              </li>
-              <li data-aos="fade-up" data-aos-delay="400">
-                <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4"
-                  class="collapsed">What are the fields revolutionized by IoT?<i
-                    class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    There is probably no domain that is not touched by automated IoT devices. IoT devices have changed the
-                    game of sectors by innovating Smart homes, the automobile industry, smart farming, healthcare, energy,
-                    manufacturing, healthcare, and many more. IoT devices continue to show and extend their dominance over
-                    other areas and continue to grow bigger.
-                  </p>
-                </div>
-              </li>
+                        <li data-aos="fade-up" data-aos-delay="100">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse"
+                            data-bs-target="#faq-list-{{ $key }}">{{ $faq->title }}<i class="bx bx-chevron-down icon-show"></i><i
+                            class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-{{ $key }}" class="collapse  {{ $key == 0 ? 'show' : '' }}" data-bs-parent=".faq-list">
+                            {{ $faq->description }}
+                        </div>
+                        </li>
+                     @endforeach
+                </ul>
+              </div>
 
-
-            </ul>
-          </div>
-
-        </div>
-      </section><!-- End Frequently Asked Questions Section -->
+            </div>
+          </section><!-- End Frequently Asked Questions Section -->
+      @endif
 
 @endsection

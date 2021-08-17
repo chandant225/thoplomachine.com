@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Models\Service;
 use Illuminate\Support\Str;
 use App\Models\Setting;
 use Illuminate\Support\Facades\URL;
@@ -29,4 +29,10 @@ function get_storage_location()
 function formated_date($date)
 {
     return \Carbon\Carbon::parse($date)->toFormattedDateString();
+}
+
+
+function footer_services($items = 4) {
+    $service= Service::orderBy('id', 'desc')->take($items)->get();
+    return $service;
 }

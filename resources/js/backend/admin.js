@@ -39,7 +39,8 @@ Vue.component("infos", require("./info/infos").default);
 // our teams
 Vue.component("our-teams-component", require("./info/OurTeams").default);
 
-Vue.component("logo", require("../components/logo.vue").default);
+//pages
+Vue.component("page-component", require("./Pages.vue").default);
 
 // global components
 import { BootstrapVue } from "bootstrap-vue";

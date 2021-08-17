@@ -76,6 +76,12 @@
                     <span>Contacts</span></a>
             </li>
 
+            <li class="nav-item  {{ Route::currentRouteName() == 'pages.index' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('pages.index') }}">
+                    <i class="fas fa-file"></i>
+                    <span>Pages</span></a>
+            </li>
+
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"

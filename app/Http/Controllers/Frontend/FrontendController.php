@@ -30,6 +30,7 @@ class FrontendController extends BaseController
         $clients = Portfolio::take(6)->get();
         $blogs = Blog::where('featured', 1)->orderBy('id', 'desc')->take(4)->get();
         $services = Service::where('status', 1)->orderBy('id', 'desc')->take(4)->get();
+        $faqs = Faq::orderBy('id', 'desc')->take(4)->get();
 
         return view('frontend.index', [
             'portfolio' => $portfolio,
@@ -37,6 +38,7 @@ class FrontendController extends BaseController
             'clients' => $clients,
             'blogs' => $blogs,
             'services' => $services,
+            'faqs' => $faqs,
         ]);
     }
 
@@ -262,4 +264,6 @@ class FrontendController extends BaseController
     {
         return view('frontend.pages.product.details');
     }
+
+
 }
