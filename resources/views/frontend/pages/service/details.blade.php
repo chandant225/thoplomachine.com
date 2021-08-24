@@ -20,18 +20,47 @@
 
     </div>
   </section><!-- End Breadcrumbs -->
-
   <Section class="cta-content">
-      <div class="container" data-aos="zoom-in">
+    <div class="container" data-aos="zoom-in">
 
-          <div class="row">
-            <div class="col-lg-12 text-start">
-              <h3>{{ $service->name }}</h3>
-              {!! $service->description !!}
-            </div>
+      <div class="row">
+        <h3 class=" text-uppercase">{{ $service->name }}</h3>
+
+        <div class="col-lg-8 text-start">
+          <br>
+          <div class="img-banner">
+            <img src="{{ get_storage_location() }}/{{ $service->image }}"
+              width="100%" alt="{{ $service->name }}">
           </div>
-
+          <br>
+          {!! $service->description !!}
         </div>
+        <div class="col-lg-4 text-start">
+            @if(count($others_services) > 0)
+                <div class="row mt-4">
+                  <h3 class=" text-uppercase">Category</h3>
+                  <div class="card">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="category">
+                          <ul>
+                            @foreach ($others_services as $service)
+
+                            <li><a href="{{ url('service') }}/{{ $service->slug }}">{{ $service->name }}</a></li>
+
+                            @endforeach
+                            <hr>
+                          </ul>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+            @endif
+        </div>
+
+      </div>
   </Section>
 
 @endsection

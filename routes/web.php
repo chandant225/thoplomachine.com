@@ -34,7 +34,7 @@ Route::get('/thank-you', [App\Http\Controllers\Frontend\FrontendController::clas
 
 // blog
 Route::get('/blogs', [App\Http\Controllers\Frontend\FrontendController::class, 'Blog']);
-Route::get('/category/{category}', [App\Http\Controllers\Frontend\FrontendController::class, 'blogCategory']);
+Route::get('/searchby/{category}', [App\Http\Controllers\Frontend\FrontendController::class, 'blogCategory']);
 Route::get('/blog/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'blogDetail']);
 
 //services

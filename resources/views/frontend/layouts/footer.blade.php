@@ -1,17 +1,7 @@
 <footer id="footer">
 
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-        </div>
-      </div>
+    <div id="app">
+        <newsletter-component></newsletter-component>
     </div>
 
     <div class="footer-top">
@@ -39,11 +29,11 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/') }}">Home</a></li>
               {{-- <li><i class="bx bx-chevron-right"></i> <a href="{{ url() }}">About us</a></li> --}}
-              @if(count($pages) > 0)
+              {{-- @if(count($pages) > 0)
                 @foreach ($pages as $page)
                     <li><i class="bx bx-chevron-right"></i> <a href="{{ url($page->slug) }}">{{ $page->title }}</a></li>
                 @endforeach
-              @endif
+              @endif --}}
             </ul>
           </div>
 
@@ -92,6 +82,8 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
+
+  <script src="{{ asset('js/frontend.js') }}"></script>
 
 </body>
 

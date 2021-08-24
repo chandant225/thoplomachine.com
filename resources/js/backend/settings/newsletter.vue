@@ -1,8 +1,5 @@
 <template>
     <div class="blog col-12 p2">
-        <div class="flash">
-            <FlashMessage></FlashMessage>
-        </div>
 
         <loading v-if="isLoading"></loading>
 

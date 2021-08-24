@@ -102,15 +102,10 @@ class FrontendController extends BaseController
     // blog-------------------------------------------
     public function blogCategory($cat)
     {
-        $category = BlogCategory::all();
-        $script = Script::all();
+        $blogs = Blog::where('category', $cat)->orderBy('id', 'desc')->paginate(10);
 
-        $blogs = Blog::where('category', $cat)->orderBy('id', 'desc')->paginate(1);
-        return view('frontend_pages.blog.category', [
+        return view('frontend.pages.blog.category', [
             'blogs' => $blogs,
-            'cat' => $cat,
-            'category' => $category,
-            'script' => $script,
         ]);
     }
 
@@ -119,31 +114,18 @@ class FrontendController extends BaseController
     public function blogDetail($slug)
     {
 
-        $b = Blog::where('slug', $slug)->first();
-        // $related = Blog::where('category_id', $b[0]->category_id)->take(4)->get();
-        // $recent = Blog::take(6)->orderBy('id', 'desc')->whereNotIN('slug', [$b[0]->slug])->get();
+        $b = Blog::where('slug', $slug)->where('featured', 1)->first();
 
-        // $blog = $b[0];
         $fullurl = URL::to('/').'/blog/'.$b->slug;
-        $socialShare = \Share::page(
-            $fullurl,
-            $b->title
-        )
-        ->facebook()
-        ->twitter()
-        ->reddit()
-        ->linkedin()
-        ->whatsapp()
-        ->telegram();
-
 
         $category = BlogCategory::take(5)->get();
+        $recents_blogs = Blog::where('slug', '!=', $slug)->where('featured', 1)->orderBy('id', 'desc')->take(4)->get();
+
         return view('frontend.pages.blog.blog-details', [
             'blog' => $b,
             // 'related' => $related,
-            // 'recent' => $recent,
+            'recents' => $recents_blogs,
             'categories' => $category,
-            'socialShare' => $socialShare
         ]);
 
 
@@ -254,8 +236,10 @@ class FrontendController extends BaseController
 
     public function serviceDetails($slug)
     {
-        $service = Service::where('slug', $slug)->first();
-        return view('frontend.pages.service.details', compact('service'));
+        $service = Service::where('slug', $slug)->where('status', 1)->first();
+        $others_services = Service::where('slug', '!=', $slug)->where('status', 1)->take(4)->get();
+
+        return view('frontend.pages.service.details', compact('service', 'others_services'));
     }
 
     public function products()
