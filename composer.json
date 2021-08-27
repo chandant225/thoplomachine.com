@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
         "nesbot/carbon": "^2.48",
+        "renatomarinho/laravel-page-speed": "^2.0",
         "spatie/laravel-analytics": "^3.11"
     },
     "require-dev": {

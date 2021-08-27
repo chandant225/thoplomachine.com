@@ -6,7 +6,38 @@
         </div>
         <hr>
         <!-- Content Row -->
-        <div class="row">
-
-        </div>
+        <div class="container">
+            <div class="row">
+              <div class="col-sm-4 mt-2 animation">
+                <div class="card p-3">
+                    <h1>hello</h1>
+                </div>
+              </div>
+              <div class="col-sm-4 mt-2">
+                <div class="card p-3">
+                    <h1>hello</h1>
+                </div>
+              </div>
+              <div class="col-sm-4 mt-2">
+                <div class="card p-3">
+                    <h1>hello</h1>
+                </div>
+              </div>
+              <div class="col-sm-4 mt-2">
+                <div class="card p-3">
+                    <h1>hello</h1>
+                </div>
+              </div>
+              <div class="col-sm-4 mt-2">
+                <div class="card p-3">
+                    <h1>hello</h1>
+                </div>
+              </div>
+              <div class="col-sm-4 mt-2">
+                <div class="card p-3">
+                    <h1>hello</h1>
+                </div>
+              </div>
+            </div>
+          </div>
 @endsection

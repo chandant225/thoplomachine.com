@@ -94,7 +94,7 @@ Route::group(['middleware' => ['auth'], 'prefix' =>'admin'], function () {
     Route::get('set-seen/contact/{id}', [App\Http\Controllers\Backend\Settings\ContactController::class, 'setSeenContact']);
 
     // newsletter---------------------------------------------------------------------------------------------
-    Route::resource('newsletter', App\Http\Controllers\Backend\Settings\NewsletterController::class)->only(['index', 'update', 'destroy']);
+    Route::resource('subscriber', App\Http\Controllers\Backend\Settings\NewsletterController::class)->only(['index', 'update', 'destroy']);
     Route::post('get-all-newsletter', [App\Http\Controllers\Backend\Settings\NewsletterController::class, 'getAllNewsletter']);
 
     // blogs----------------------------------------------------------------------------------------------

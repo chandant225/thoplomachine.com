@@ -22,7 +22,11 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/file-upload-with-preview.min.css') }}">
   <script src="https://cdn.tiny.cloud/1/v96d86m5e2vo346jhn45ayjy9920xgw4q9p3zlw9y0n92avm/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
+    <style>
+        .animation:hover {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 
 <body id="page-top">

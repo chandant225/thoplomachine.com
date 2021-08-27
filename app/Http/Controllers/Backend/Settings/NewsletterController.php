@@ -11,17 +11,10 @@ class NewsletterController extends BaseController
 
     public function index()
     {
-
-        return view('admin_pages.settings.newsletter');
+        $subscribers = Newsletter::orderBy('id', 'desc')->paginate(10);
+        return view('admin.pages.subscriber', compact('subscribers'));
     }
 
-    public function getAllNewsletter(Request $request)
-    {
-
-        $contact = Newsletter::orderBy('id', 'desc')->paginate(10);
-
-        return json_encode($this->reportSuccess('Data retrived successfully', $contact));
-    }
 
     public function destroy($id)
     {

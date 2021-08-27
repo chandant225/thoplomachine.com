@@ -82,6 +82,12 @@
                     <span>Pages</span></a>
             </li>
 
+            <li class="nav-item  {{ Route::currentRouteName() == 'subscriber.index' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('subscriber.index') }}">
+                    <i class="fas fa-file"></i>
+                    <span>Newsletter Subscriber</span></a>
+            </li>
+
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
