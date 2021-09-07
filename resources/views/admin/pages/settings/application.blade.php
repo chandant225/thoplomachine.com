@@ -16,27 +16,20 @@
     <div class="card-body">
         <form enctype="multipart/form-data" method="POST" action="{{ route('app.setting.save') }}">
             @csrf
-
-            <div class="custom-file-container" data-upload-id="myUniqueUploadId">
-                <label>Upload File
-                    <a href="javascript:void(0)" class="custom-file-container__image-clear"
-                        title="Clear Image">&times;</a></label>
-                <label class="custom-file-container__custom-file">
+            <div class="col-md-12">
+                <div class="form-group">
                     <input type="hidden" name="types[]" value="app_logo">
                     <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="image/png"
                         aria-label="Choose File" name="app_logo" />
                     <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
-                    <span class="custom-file-container__custom-file__custom-file-control"></span>
-                </label>
-                <div class="custom-file-container__image-preview image-preview"></div>
-
-                @if (get_setting('app_logo'))
-                <div class="m-3">
-                    <h2>Previous logo</h2>
-                    <img src="{{ URL::asset('storage/') }}/{{ get_setting('app_logo') }}" class="img-fluid"
-                        style="width: 28%;">
+                    <input type="file" name="app_logo" placeholder="Choose image" id="image" accept="image/*" class="form-control">
                 </div>
-                @endif
+            </div>
+
+            <div class="col-md-12 mb-2">
+                <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                    alt="preview image" style="max-height: 250px;border: 2px solid;
+                    box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;">
             </div>
 
             <div class="form-group">
@@ -137,5 +130,32 @@
       toolbar_mode: 'floating',
    });
 </script>
+
+
+<script type="text/javascript">
+    let get_image = `{{ get_setting('app_logo') ? true : false }}`
+    let full_url = `{{ get_storage_location() }}` +'/' +  `{{ get_setting('app_logo')}}`
+    // let location  = `{{ get_storage_location() }}`
+    // console.log(get_image);
+    // console.log(getImage);
+    if (get_image) {
+        $('#preview-image-before-upload').attr('src', full_url);
+    }
+    $(document).ready(function (e) {
+       $('#image').change(function(){
+        let reader = new FileReader();
+        reader.onload = (e) => {
+
+          $('#preview-image-before-upload').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(this.files[0]);
+
+       });
+
+    });
+
+
+    </script>
 @endsection
 @endsection

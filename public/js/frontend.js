@@ -1880,7 +1880,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -37971,12 +37970,6 @@ var render = function() {
       _c("div", { staticClass: "row justify-content-center" }, [
         _c("div", { staticClass: "col-lg-6" }, [
           _c("h4", [_vm._v("Join Our Newsletter")]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Tamen quem nulla quae legam multos aute sint culpa legam noster magna"
-            )
-          ]),
           _vm._v(" "),
           _c("form", [
             _c("input", {

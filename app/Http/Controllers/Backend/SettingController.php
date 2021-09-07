@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Storage;
 
+
 class SettingController extends Controller
 {
     /**
@@ -22,58 +23,53 @@ class SettingController extends Controller
     //global settings to create and update the settings with single image
 
     public function update(Request $request)
-     {
-         foreach ($request->types as $key => $type) {
+    {
+        // return $request;
 
-           if($type == 'site_name'){
+
+        foreach ($request->types as $key => $type) {
+
+
+            if ($type == 'site_name') {
                 $this->overWriteEnvFile('APP_NAME', $request[$type]);
             }
 
-            if($type == 'timezone'){
+            if ($type == 'timezone') {
                 $this->overWriteEnvFile('APP_TIMEZONE', $request[$type]);
-            }
-            else {
-                $settings = Setting::where('type', $type)->first();
-                if($settings != null){
-                    if($request->hasFile($type)){
+            } else {
+                // if image
+                if ($request->hasFile($type)) {
 
-                        $file = $request->file($type);
-                        $file_name = time().'_'.$file->getClientOriginalName();
-                        $full_file_path = $request->file($type)->storeAs('images', $file_name, 'public');
-                        $settings->value = $full_file_path;
+                    $image = Setting::where('type', $type)->first();
+                    // dd($image)
+                    if($image) {
+                        $image->value ? Storage::delete($image->value) : '';
                     }
-                    else if(gettype($request[$type]) == 'array') {
-                        $settings->value = json_encode($request[$type]);
 
-                    } else {
+                    $file = $request->file($type);
+                    $file_name = time() . '_' . $file->getClientOriginalName();
+                    $full_file_path = $request->file($type)->storeAs('images', $file_name, 'public');
+                    $value = $full_file_path;
 
-                        $settings->value = $request[$type];
-                    }
-                    $settings->save();
+
+                    //if array
+                } elseif (gettype($request[$type]) == 'array') {
+                    $value  = json_encode($request[$type]);
+                } else {
+                    $value = request($type);
                 }
-                else{
-                    $settings = new Setting;
-                    $settings->type = $type;
-                    if($request->hasFile($type)){
 
-                        $file = $request->file($type);
-                        $file_name = time().'_'.$file->getClientOriginalName();
-                        $full_file_path = $request->file($type)->storeAs('images', $file_name, 'public');
-                        $settings->value = $full_file_path;
-                    }
-                    else if(gettype($request[$type]) == 'array') {
-                        $settings->value = json_encode($request[$type]);
-
-                    } else {
-
-                        $settings->value = $request[$type];
-                    }
-                    $settings->save();
+                if($request->has($type)){
+                    set_setting($type, $value);
                 }
             }
         }
         return back();
-     }
+    }
 
 
+    public function homeSection()
+    {
+        return  view('admin.pages.settings.websitesetting');
+    }
 }

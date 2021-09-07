@@ -4,7 +4,7 @@
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
         <i class="fa fa-bars"></i>
     </button>
-    <a href="{{ env('APP_URL') }}">
+    <a href="{{ url('/') }}">
         <button class="btn btn-sm btn-primary d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2  mx-5 my-md-0 mw-100">
             Visit Site
         </button>

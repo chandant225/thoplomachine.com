@@ -85,9 +85,8 @@
             <li class="nav-item  {{ Route::currentRouteName() == 'subscriber.index' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('subscriber.index') }}">
                     <i class="fas fa-file"></i>
-                    <span>Newsletter Subscriber</span></a>
+                    <span>Newsletters</span></a>
             </li>
-
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -100,7 +99,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         {{-- <h6 class="collapse-header">Custom Utilities:</h6> --}}
                         <a class="collapse-item {{ Route::currentRouteName() == 'admin.app.setting' ? 'active' : '' }}" href="{{ route('admin.app.setting') }}">General Settings</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
+                        <a class="collapse-item {{ Route::currentRouteName() == 'admin.settings.homesection' ? 'active' : '' }}" href="{{ route('admin.settings.homesection') }}">Website Setup</a>
                         <a class="collapse-item" href="utilities-animation.html">Animations</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>

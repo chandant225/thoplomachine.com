@@ -164,4 +164,6 @@ Route::group(['middleware' => ['auth'], 'prefix' =>'admin'], function () {
     Route::get('/application-settings', [App\Http\Controllers\Backend\SettingController::class, 'index'])->name('admin.app.setting');
     Route::post('application-settings/save', [App\Http\Controllers\Backend\SettingController::class, 'update'])->name('app.setting.save');
 
+    Route::get('/home-section', [App\Http\Controllers\Backend\SettingController::class, 'homeSection'])->name('admin.settings.homesection');
+
 });

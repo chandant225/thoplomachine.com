@@ -14,27 +14,31 @@
 </style>
 @endsection
 @section('content')
+@if (get_setting('hero_section') == '1')
+
 <section id="hero" class="d-flex align-items-center">
 
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
           data-aos="fade-up" data-aos-delay="200">
-          <h1>Leading future with Smart IoT solution</h1>
-          <h2>Climbing new heights of innovation with automation, robotics technology, and smart IoT solution</h2>
+
+          {!! get_setting('hero_text') !!}
+
           <div class="d-flex justify-content-center justify-content-lg-start">
             <a href="#about" class="btn-get-started scrollto">Get Started</a>
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i
+            <a href="{{ get_setting('hero_youtube_link')  ? get_setting('hero_youtube_link') : 'https://www.youtube.com/watch?v=lzu2liLRkJM'  }}" class="glightbox btn-watch-video"><i
                 class="bi bi-play-circle"></i><span>Watch Video</span></a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-          <img src="{{ asset('assets/frontend/img/hero-img.png') }}" class="img-fluid animated" alt="">
+          <img src="{{ get_setting('hero_image') ? get_storage_location(). '/'.get_setting('hero_image')  : asset('assets/frontend/img/hero-img.png') }}" class="img-fluid animated" alt="">
         </div>
       </div>
     </div>
 
   </section><!-- End Hero -->
+@endif
 
 
     <!-- ======= Cliens Section ======= -->
@@ -56,21 +60,21 @@
       </section><!-- End Cliens Section -->
 
       <!-- ======= About Us Section ======= -->
+      @if(get_setting('about_section') == '1')
       <section id="about" class="about">
         <div class="container" data-aos="fade-up">
 
           <div class="section-title">
-            <h2> #dare to automate</h2>
+            <h2> {{ get_setting('about_title') ? get_setting('about_title')  : 'About Us' }} </h2>
           </div>
 
           <div class="row content">
             <div class="col-lg-6 text-center">
-              <img src="{{ asset('assets/frontend/img/about-us.png') }}" class="img-fluid animated" alt="" width="250px">
+              <img src="{{ get_setting('about_image') ? get_storage_location(). '/'.get_setting('about_image') : asset('assets/frontend/img/about-us.png') }}" class="img-fluid animated" alt="" width="250px">
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0">
               <p>
-                Having half a decade of experience working as a freelancer with National and International clients, we
-                have helped 100’s of industries boosting their products with our automation system.
+                {{ get_setting('about_description') }}
               </p>
               <a href="{{ url('/about-us') }}" class="btn-learn-more">Learn More</a>
             </div>
@@ -78,7 +82,8 @@
 
         </div>
       </section><!-- End About Us Section -->
-
+      @endif
+      @if (get_setting('whyus_section') == '1')
       <!-- ======= Why Us Section ======= -->
       <section id="why-us" class="why-us section-bg">
         <div class="container-fluid" data-aos="fade-up">
@@ -88,10 +93,9 @@
             <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
 
               <div class="content">
-                <h3>Why <strong>Thoplo machine</strong></h3>
+                <h3>{{ get_setting('whyus_title') }}</h3>
                 <p>
-                  Our execution strategy incorporates proven methodologies, extremely qualified personnel, and a highly
-                  responsive approach to managing deliverables.
+                  {{ get_setting('whyus_description') }}
                 </p>
               </div>
 
@@ -156,11 +160,12 @@
             </div>
 
             <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img"
-              style='background-image: url("assets/frontend/img/why-us.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+              style='background-image: url({{ get_storage_location() }}{{ '/' }}{{ get_setting('whyus_image') }});' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
           </div>
 
         </div>
       </section><!-- End Why Us Section -->
+      @endif
 
       <!-- ======= Our Mission ======= -->
       <section id="about" class="about">

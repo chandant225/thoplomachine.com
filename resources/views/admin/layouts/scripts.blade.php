@@ -9,13 +9,14 @@
 <script src="{{ asset('assets/admin/js/sb-admin-2.min.js') }}"></script>
 
 <!-- Page level plugins -->
-<script src="{{ asset("assets/admin/vendor/chart.js/Chart.min.js") }}"></script>
+{{-- <script src="{{ asset("assets/admin/vendor/chart.js/Chart.min.js") }}"></script>
 
 <!-- Page level custom scripts -->
 <script src="{{ asset("assets/admin/js/demo/chart-area-demo.js") }}"></script>
-<script src="{{ asset("assets/admin/js/demo/chart-pie-demo.js") }}"></script>
-<script src="{{ asset("assets/admin/js/file-upload-with-preview.min.js") }}"></script>
-{{-- <script src="{{ mix('js/admin.js') }}"></script> --}}
-<script src="{{ mix('/js/admin.js') }}"></script>
+<script src="{{ asset("assets/admin/js/demo/chart-pie-demo.js") }}"></script> --}}
+{{-- <script src="{{ asset("assets/admin/js/file-upload-with-preview.min.js") }}"></script> --}}
+<script src="{{ mix('js/admin.js') }}"></script>
+{{-- <script src="{{ mix('/js/admin.js') }}"></script> --}}
+
 
 @yield('scripts')
