@@ -328,6 +328,9 @@
         </div>
     </div>
 </div>
+
+@endsection
+
 @section('scripts')
 {{-- <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script> --}}
 {{-- <script src="https://cdn.tiny.cloud/1/v96d86m5e2vo346jhn45ayjy9920xgw4q9p3zlw9y0n92avm/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
@@ -499,5 +502,4 @@
 
 </script>
 
-@endsection
 @endsection
