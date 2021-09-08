@@ -15,7 +15,7 @@
 <script src="{{ asset("assets/admin/js/demo/chart-area-demo.js") }}"></script>
 <script src="{{ asset("assets/admin/js/demo/chart-pie-demo.js") }}"></script> --}}
 {{-- <script src="{{ asset("assets/admin/js/file-upload-with-preview.min.js") }}"></script> --}}
-<script src="{{ mix('js/admin.js') }}"></script>
+<script src="{{ asset('js/admin.js') }}"></script>
 {{-- <script src="{{ mix('/js/admin.js') }}"></script> --}}
 
 
