@@ -45,4 +45,4 @@ Route::get('service/{slug}', [App\Http\Controllers\Frontend\FrontendController::
 Route::get('products', [App\Http\Controllers\Frontend\FrontendController::class, 'products']);
 Route::get('product/shop', [App\Http\Controllers\Frontend\FrontendController::class, 'productDetails']);
 
-Route::get('{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'page_details']);
+Route::get('/page/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'page_details'])->name('page.details');

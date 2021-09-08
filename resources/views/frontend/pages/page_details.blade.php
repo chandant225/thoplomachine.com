@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 {{-- @section('title', 'Clients - Thoplomachine') --}}
-@section('title', $page->title)
+{{-- @section('title', $page->title) --}}
 @section('seo_title', $page->meta_title)
 @section('meta_description', $page->meta_description)
 @section('meta_keywords', $page->meta_keywords)

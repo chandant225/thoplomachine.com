@@ -34,7 +34,7 @@
               @endphp
               @if(count($pages) > 0)
                 @foreach ($pages as $page)
-                    <li><i class="bx bx-chevron-right"></i> <a href="{{ url($page->slug) }}">{{ $page->title }}</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="{{ route('page.details', $page->slug) }}">{{ $page->title }}</a></li>
                 @endforeach
               @endif
             </ul>
