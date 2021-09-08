@@ -9,9 +9,9 @@
 
       <ol>
         <li><a href="index.html">Home</a></li>
-        <li>Team</li>
+        <li>{{ get_setting('ourteams_title') }}</li>
       </ol>
-      <h2>Team</h2>
+      <h2>{{ get_setting('ourteams_title') }}</h2>
 
     </div>
   </section><!-- End Breadcrumbs -->
@@ -23,21 +23,13 @@
         <div class="container" data-aos="fade-up">
 
           <div class="section-title">
-            <h2>Team</h2>
-            <p>Thoplo Machine is happy today to join you all in this AI and Automation Revolution that will soon be
-              the integral ecosystem of the whole new World.
-
-              Our team of experts on AI Automation dares to reduce your daily hustle and give you an intelligent and
-              smooth life experience through our IoT devices.
-              <br>
-              Think, Think and Think because that’s what humans do the best and let our team design and innovate the
-              Automation revolution that you deserve.
-
-              We have a dream that one day we would be able to automate the world and revolutionize your life.
+            <h2>{{ get_setting('ourteams_title') }}</h2>
+            <p>
+                {{ get_setting('ourteam_description') }}
             </p>
           </div>
 
-          <div class="row">
+          <div class="row mt-3">
             @if (count($teams) > 0)
                 @foreach ($teams as $team)
                 <div class="col-lg-6">

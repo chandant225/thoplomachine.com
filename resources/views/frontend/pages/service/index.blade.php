@@ -19,7 +19,7 @@
         <li><a href="{{ url('/') }}">Home</a></li>
         <li>Services</li>
       </ol>
-      <h2>IoT Solutions and Services</h2>
+      <h1>{{ get_setting('services_title') }}</h1>
 
     </div>
   </section><!-- End Breadcrumbs -->
@@ -31,11 +31,10 @@
         <div class="container" data-aos="fade-up">
 
           <div class="section-title">
-            <h2>Services</h2>
-            <p>Automation is unstoppable and inevitable. Thoplo Machine provides various Home and Industry based
-              Automation solutions to do all your heavy lifting for you. Expand and Grow, let Intelligent machines do
-              all your work. <br><br>
-              AI Crafted with Machines, that’s where the magic begins. </p>
+            <h2>{{ get_setting('services_title') }}</h2>
+            <p>
+                {{ get_setting('service_desc') }}
+            </p>
           </div>
 
           <div class="row">

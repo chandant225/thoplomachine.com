@@ -18,9 +18,6 @@
 
             <hr class="sidebar-divider">
 
-            {{-- <div class="sidebar-heading">
-                Interface
-            </div> --}}
 
             <li class="nav-item">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -100,8 +97,6 @@
                         {{-- <h6 class="collapse-header">Custom Utilities:</h6> --}}
                         <a class="collapse-item {{ Route::currentRouteName() == 'admin.app.setting' ? 'active' : '' }}" href="{{ route('admin.app.setting') }}">General Settings</a>
                         <a class="collapse-item {{ Route::currentRouteName() == 'admin.settings.homesection' ? 'active' : '' }}" href="{{ route('admin.settings.homesection') }}">Website Setup</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
             </li>

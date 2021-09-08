@@ -208,7 +208,123 @@
                     </div>
                   </div>
                 </div>
+
+
+                {{-- contact us --}}
+
+                <div class="card mt-3">
+                    <div class="card-header" id="contact-us">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed text-decoration-none" data-toggle="collapse" data-target="#contactUs" aria-expanded="false" aria-controls="contactUs">
+                          Contact Us
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="contactUs" class="collapse" aria-labelledby="contact-us" data-parent="#accordion">
+                      <div class="card-body">
+                          <form enctype="multipart/form-data" method="POST" action="{{ route('app.setting.save') }}">
+                              @csrf
+
+                              <div class="form-group">
+                                  <label for="contactus_title">Contact Title</label>
+                                  <input type="hidden" name="types[]" value="contactus_title">
+                                  <input type="text" name="contactus_title" value="{{ get_setting('contactus_title') }}" placeholder="Contact Us title" class="form-control">
+
+                              <div class="form-group">
+                                  <label for="contactus_image">Contact us image</label>
+                                  <input type="hidden" name="types[]" value="contactus_image">
+                                  <input type="file" class="custom-file-container__custom-file__custom-file-input"
+                                      accept="image/png" aria-label="Choose File" name="contactus_image" />
+                                  <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                  <input type="file" name="contactus_image" placeholder="Choose image" id="contactus_image"
+                                      accept="image/*" class="form-control"/>
+                              </div>
+
+                              <div class="col-md-12 mb-2">
+                                  <img id="preview-image-contactus-image"
+                                      src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                                      alt="preview image" style="max-height: 250px;border: 2px solid;
+                                box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;"/>
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="contactus_desc">Description</label>
+                                  <input type="hidden" name="types[]" value="contactus_description">
+                                  <textarea name="contactus_description" id="contactus_desc\" placeholder="contact us description" class="form-control" cols="5" rows="5">{{ get_setting('contactus_description') }}</textarea>
+                              </div>
+
+                              <button type="submit" class="btn btn-primary">Update</button>
+                          </form>
+                      </div>
+                    </div>
+                  </div>
               </div>
+
+
+              {{-- our teams --}}
+
+              <div class="card mt-3">
+                <div class="card-header" id="our-teams">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed text-decoration-none" data-toggle="collapse" data-target="#ourTeams" aria-expanded="false" aria-controls="ourTeams">
+                      Our Teams
+                    </button>
+                  </h5>
+                </div>
+                <div id="ourTeams" class="collapse" aria-labelledby="our-teams" data-parent="#accordion">
+                  <div class="card-body">
+                      <form enctype="multipart/form-data" method="POST" action="{{ route('app.setting.save') }}">
+                          @csrf
+
+                          <div class="form-group">
+                              <label for="ourteams_title">Our teams Title</label>
+                              <input type="hidden" name="types[]" value="ourteams_title">
+                              <input type="text" name="ourteams_title" value="{{ get_setting('ourteams_title') }}" placeholder="Our teams title" class="form-control">
+
+                          <div class="form-group">
+                              <label for="ourteam_desc">Our Teams Description</label>
+                              <input type="hidden" name="types[]" value="ourteam_description">
+                              <textarea name="ourteam_description" id="ourteam_desc" placeholder="ourteam description" class="form-control" cols="5" rows="5">{{ get_setting('ourteam_description') }}</textarea>
+                          </div>
+
+                          <button type="submit" class="btn btn-primary">Update</button>
+                      </form>
+                  </div>
+                </div>
+              </div>
+
+
+              {{-- services settings --}}
+              <div class="card mt-3">
+                <div class="card-header" id="services">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed text-decoration-none" data-toggle="collapse" data-target="#services" aria-expanded="false" aria-controls="services">
+                      Services
+                    </button>
+                  </h5>
+                </div>
+                <div id="services" class="collapse" aria-labelledby="services" data-parent="#accordion">
+                  <div class="card-body">
+                      <form enctype="multipart/form-data" method="POST" action="{{ route('app.setting.save') }}">
+                          @csrf
+
+                          <div class="form-group">
+                              <label for="services_title">Service Title</label>
+                              <input type="hidden" name="types[]" value="services_title">
+                              <input type="text" name="services_title" value="{{ get_setting('services_title') }}" placeholder="Service title" class="form-control">
+
+                          <div class="form-group">
+                              <label for="service_desc">Service Description</label>
+                              <input type="hidden" name="types[]" value="service_desc">
+                              <textarea name="service_desc" id="service_desc" placeholder="Service description" class="form-control" cols="5" rows="5">{{ get_setting('service_desc') }}</textarea>
+                          </div>
+
+                          <button type="submit" class="btn btn-primary">Update</button>
+                      </form>
+                  </div>
+                </div>
+              </div>
+          </div>
         </div>
     </div>
 </div>
@@ -357,7 +473,31 @@
             </script>
 
 
+{{-- //contact us --}}
+<script>
+     let get_contactus_image = `{{ get_setting('contactus_image') ? true : false }}`
+            let full_contactus_url = `{{ get_storage_location() }}` +'/' +  `{{ get_setting('contactus_image')}}`
+            // let location  = `{{ get_storage_location() }}`
+            // console.log(get_image);
+            // console.log(getImage);
+            if (get_contactus_image) {
+                $('#preview-image-contactus-image').attr('src', full_contactus_url);
+            }
+            $(document).ready(function (e) {
+               $('#contactus_image').change(function(){
+                let reader = new FileReader();
+                reader.onload = (e) => {
 
+                  $('#preview-image-contactus-image').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(this.files[0]);
+
+               });
+
+            });
+
+</script>
 
 @endsection
 @endsection

@@ -14,7 +14,7 @@
       <ol>
         <li><a href="{{ url('/') }}">Home</a></li>
         <li><a href="{{ url('/services') }}">Services</a></li>
-        <li>{{ $service->title }}</li>
+        <li>{{ $service->name }}</li>
       </ol>
       <h1>{{ $service->name }}</h1>
 

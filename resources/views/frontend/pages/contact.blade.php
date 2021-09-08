@@ -9,9 +9,9 @@
 
       <ol>
         <li><a href="{{ url('/') }}">Home</a></li>
-        <li>Contact us</li>
+        <li>{{ get_setting('contactus_title') }}</li>
       </ol>
-      <h1>Contact us</h1>
+      <h1>{{ get_setting('contactus_title') }}</h1>
 
     </div>
   </section><!-- End Breadcrumbs -->
@@ -23,15 +23,9 @@
         <div class="container" data-aos="fade-up">
 
           <div class="section-title">
-            <h2>Contact</h2>
-            <p>Every idea either big or Small has the potential to create an impact. Do you have such an idea to
-              transform your home/industry and be the next trendsetter in IOT Automation? Control and regulate your
-              home/ industry seamlessly.
-              <br>
-              Well, you need the right team to match your passion and Energy.
-              <br>
-
-              Let’s grab a coffee and change the world together.
+            <h2>{{ get_setting('contactus_title') }}</h2>
+            <p>
+                {{ get_setting('contactus_description') }}
             </p>
           </div>
 
@@ -79,7 +73,7 @@
           <div class="col-md-6 p-3 bg-light text-center">
             <h1 class=" ">Get In Touch With Us</h1>
             <h5 class="text-secondary ">Anything On your Mind. We’ll Be Glad To Assist You!</h5>
-            <img src="{{ asset('assets/frontend/img/undraw_Envelope_re_f5j4.svg') }}" width="80%" height="100%" alt="">
+            <img src="{{  get_setting('contactus_image') ? get_storage_location(). '/'.get_setting('contactus_image') : asset('assets/frontend/img/undraw_Envelope_re_f5j4.svg') }}" width="80%" height="100%" alt="">
           </div>
           <div class="col-md-6">
             <form action="{{ url('save-contact') }}" method="POST" role="form" class="php-email-form">
