@@ -29,11 +29,14 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/') }}">Home</a></li>
               {{-- <li><i class="bx bx-chevron-right"></i> <a href="{{ url() }}">About us</a></li> --}}
-              {{-- @if(count($pages) > 0)
+              @php
+              $pages = get_pages_list();
+              @endphp
+              @if(count($pages) > 0)
                 @foreach ($pages as $page)
                     <li><i class="bx bx-chevron-right"></i> <a href="{{ url($page->slug) }}">{{ $page->title }}</a></li>
                 @endforeach
-              @endif --}}
+              @endif
             </ul>
           </div>
 

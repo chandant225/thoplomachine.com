@@ -253,4 +253,9 @@ class FrontendController extends BaseController
     }
 
 
+    public function page_details($slug)
+    {
+        $page = Page::where('slug', $slug)->first();
+        return view('frontend.pages.page_details', compact('page'));
+    }
 }

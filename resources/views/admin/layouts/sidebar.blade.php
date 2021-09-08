@@ -76,11 +76,11 @@
                     <span>Contacts</span></a>
             </li>
 
-            {{-- <li class="nav-item  {{ Route::currentRouteName() == 'pages.index' ? 'active' : '' }}">
+            <li class="nav-item  {{ Route::currentRouteName() == 'pages.index' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('pages.index') }}">
                     <i class="fas fa-file"></i>
                     <span>Pages</span></a>
-            </li> --}}
+            </li>
 
             <li class="nav-item  {{ Route::currentRouteName() == 'subscriber.index' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('subscriber.index') }}">
