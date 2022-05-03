@@ -17,7 +17,6 @@
 @if (get_setting('hero_section') == '1')
 
 <section id="hero" class="d-flex align-items-center">
-
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
@@ -44,15 +43,28 @@
     <!-- ======= Cliens Section ======= -->
     <section id="cliens" class="cliens section-bg">
         <div class="container">
-
-          <div class="row" data-aos="zoom-in">
-            @if (count($clients) > 0)
-                @foreach ($clients as $client)
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="{{ get_storage_location() }}/{{ $client->image }}" class="img-fluid" alt="{{ $client->name }}">
-                  </div>
-                @endforeach
+          <div data-aos="zoom-in">
+          <div class="swiper">
+              <div class="swiper-wrapper">
+                 @if (count($clients) > 0)
+                    @foreach ($clients as $client)
+                      <div class="swiper-slide">
+                         <img src="{{ get_storage_location() }}/{{ $client->image }}" class="" alt="{{ $client->name }}">
+                        </div>
+                    @endforeach
             @endif
+            <div class="swiper-slide">
+                 <img  src="/client/client1.jpeg" alt="client1" class="" />
+            </div>
+            <div class="swiper-slide">
+              <img  src="/client/client2.jpeg" alt="client2" class="" />
+         </div>
+         <div class="swiper-slide">
+          <img  src="/client/client3.jpeg" alt="client3" class="" />
+     </div>
+              </div>
+          </div>
+         
 
           </div>
 

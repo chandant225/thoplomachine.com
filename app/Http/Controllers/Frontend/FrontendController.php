@@ -28,11 +28,12 @@ class FrontendController extends BaseController
         // all
         $script = Script::all();
 
-        $clients = Portfolio::take(6)->get();
+        $clients = Portfolio::orderBy('updated_at','DESC')->get();
         $blogs = Blog::where('featured', 1)->orderBy('id', 'desc')->take(4)->get();
         $services = Service::where('status', 1)->orderBy('id', 'desc')->take(4)->get();
         $faqs = Faq::orderBy('id', 'desc')->take(4)->get();
         $pages = Page::orderBy('id', 'desc')->take(6)->get();
+       
 
         return view('frontend.index', [
             'portfolio' => $portfolio,
@@ -114,12 +115,12 @@ class FrontendController extends BaseController
     public function blogDetail($slug)
     {
 
-        $b = Blog::where('slug', $slug)->where('featured', 1)->first();
+        $b = Blog::where('slug',"=", $slug)->where('featured',"=", 1)->first();
 
         $fullurl = URL::to('/').'/blog/'.$b->slug;
 
         $category = BlogCategory::take(5)->get();
-        $recents_blogs = Blog::where('slug', '!=', $slug)->where('featured', 1)->orderBy('id', 'desc')->take(4)->get();
+        $recents_blogs = Blog::where('slug', '!=', $slug)->where('featured',"=", 1)->orderBy('id', 'desc')->take(4)->get();
 
         return view('frontend.pages.blog.blog-details', [
             'blog' => $b,

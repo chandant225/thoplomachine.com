@@ -37,6 +37,23 @@
             </p>
           </div>
 
+          <section>
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Agromation</button>
+                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Industrial automation</button>
+                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Hydropower automation</button>
+              </div>
+            </nav>
+            <div class="tab-content mt-4" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Automation in agricyulture (Green house automation, Hrdroponics, Aquaponic, Aeroponic, sensor based irrigation, and agriculture constultant).</div>
+              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"> Automatize industrial process with features of IOT and modern control system.</div>
+              <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Hydropower automation include automatic panic siren, automatic valve controll according to water level at powerhouse dam.</div>
+            </div>
+          </section>
+
+
+
           <div class="row">
               @if (count($services) > 0)
                   @foreach ($services as $service)
