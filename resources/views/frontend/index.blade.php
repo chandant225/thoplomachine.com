@@ -214,14 +214,14 @@
             <div class="col-md-6">
               <div class="image">
                 <img
-                  src="https://images.samsung.com/is/image/samsung/assets/in/p6_gro1/p6_initial_explore_landing/home-explore-kv-update/3_im0078_We_Asked_You_Answered_We_Delivered_684x684.jpg?$684_684_PNG$"
+                  src="/bulb.jpeg"
                   alt="" id="slider">
               </div>
             </div>
             <div class="col-md-6">
               <div class="content ">
                 <div class="content-item  "
-                  onmouseenter="changeImg('https://images.samsung.com/is/image/samsung/assets/in/p6_gro1/p6_initial_explore_landing/home-explore-kv-update/3_im0078_We_Asked_You_Answered_We_Delivered_684x684.jpg?$684_684_PNG$')"
+                  onmouseenter="changeImg('/bulb.jpeg')"
                   onclick="loadImage(1)">
                   <div class="row ">
                     <div class="col-md-2 text-center"><span>01</span></div>

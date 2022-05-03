@@ -115,7 +115,7 @@ class FrontendController extends BaseController
     public function blogDetail($slug)
     {
 
-        $b = Blog::where('slug',"=", $slug)->where('featured',"=", 1)->first();
+        $b = Blog::where('slug', $slug)->first();
 
         $fullurl = URL::to('/').'/blog/'.$b->slug;
 

@@ -47,24 +47,38 @@
             </nav>
             <div class="tab-content mt-4" id="nav-tabContent">
               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <p>Automation in agricyulture (Green house automation, Hrdroponics, Aquaponic, Aeroponic, sensor based irrigation, and agriculture constultant).</p>
+                <p>Automation in agricyulture (Green house automation, Hrdroponics, Aquaponic, sensor based irrigation, and agriculture constultant).</p>
                 <div class="row">
                   <div class="col-sm-12 col-md-6 col-lg-4">
-                    <img src="/service_images/agro1.jpeg" alt="agro1.jpeg" class="w-100 h-" />
+                    <img src="/service_images/agro1.jpeg" alt="agro1.jpeg" class="w-100 h-75 shadow rounded" />
                   </div>
                   <div class="col-sm-12 col-md-6 col-lg-4">
-                    <img src="/service_images/agro2.jpeg" alt="agro2.jpeg" class="w-100" />
+                    <img src="/service_images/agro2.jpeg" alt="agro2.jpeg" class="w-100 h-75 shadow rounded" />
                   </div>
                   <div class="col-sm-12 col-md-6 col-lg-4">
-                    <img src="/service_images/agro3.jpeg" alt="agro3.jpeg" class="w-100" />
+                    <img src="/service_images/agro3.jpeg" alt="agro3.jpeg" class="w-100 h-75 shadow rounded" />
                   </div>
                   <div class="col-sm-12 col-md-6 col-lg-4">
-                    <img src="/service_images/agro4.jpeg" alt="agro4.jpeg" class="w-100" />
+                    <img src="/service_images/agro4.jpeg" alt="agro4.jpeg" class="w-100 h-75 shadow rounded" />
                   </div>
                 </div>
               </div>
-              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"> Automatize industrial process with features of IOT and modern control system.</div>
-              <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Hydropower automation include automatic panic siren, automatic valve controll according to water level at powerhouse dam.</div>
+              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"> <p>Automatize industrial process with features of IOT and modern control system.</p>
+              </div>
+              
+              <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><p>Hydropower automation include automatic panic siren, automatic valve controll according to water level at powerhouse dam.</p>
+                <div class="row">
+                  <div class="col-sm-12 col-md-6 col-lg-4">
+                    <img src="/service_images/hydro1.jpeg" alt="hydro1.jpeg" class="w-100 h-75 shadow rounded" />
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-4">
+                    <img src="/service_images/hydro2.jpeg" alt="hydro2.jpeg" class="w-100 h-75 shadow rounded" />
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-4">
+                    <img src="/service_images/hydro3.jpeg" alt="hydro3.jpeg" class="w-100 h-75 shadow rounded" />
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 
