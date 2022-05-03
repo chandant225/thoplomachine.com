@@ -2,9 +2,29 @@
 
 
 @section('content')
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+      <ol>
+        <li><a href="{{ url('/') }}">Home</a></li>
+        <li>Hydro siren system</li>
+      </ol>
+      <h2>{{ get_setting('about_title') }}</h2>
+
+    </div>
+  </section><!-- End Breadcrumbs -->
 <div class="container">
+
     <div class="py-8">
-        <img style="height: 25rem" src="/product_images/hydro-siren.jpg" class="card-img-top" alt="hydro-siren.jpg">
+        <div class="row">
+            <div class="col-lg-6">
+                <img style="height: 25rem" src="/product_images/hydro-siren.jpg" class="card-img-top" alt="hydro-siren.jpg">
+            </div>
+            <div class="col-lg-6">
+                <img style="height: 25rem" src="/front.jpeg" class="card-img-top" alt="hydro-siren.jpg">
+            </div>
+        </div>
+      
     </div>
       <h4 class="mt-2">Hydro siren system</h4>
      <p>Siren or alerting system is one of the essential features for hydropower in order to alert nearby people and/or settlement. When the gates of the dam opened, the river level would suddenly rise and represent very sudden danger. It is necessary to warn people at the time of dam opening. For that every dam needs a foolproof warning system to alert downstream habitats before release of water from the dam spillways.</p>

@@ -47,7 +47,7 @@ Route::get('product/shop', [App\Http\Controllers\Frontend\FrontendController::cl
 
 Route::get('/page/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'page_details'])->name('page.details');
 
-Route::get('/blogs/hydro-siren', function() {
+Route::get('/blogs/hydro-siren-system', function() {
     return view('hydro-siren');
 });
 

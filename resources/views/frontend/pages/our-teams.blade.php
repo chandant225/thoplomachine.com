@@ -61,7 +61,7 @@
                 </div>
                 @endforeach
             @else
-                <span class="text-bold">No data found.</span>
+                {{-- <span class="text-bold">No data found.</span> --}}
             @endif
 
           </div>

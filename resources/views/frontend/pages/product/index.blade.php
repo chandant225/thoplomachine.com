@@ -34,7 +34,7 @@
             <div class="rounded shadow"  style="margin-top: 1rem;">
                 <img style="height: 12rem" src="/product_images/hydro-siren.jpg" class="card-img-top" alt="hydro-siren.jpg">
                 <div class="card-body">
-                  <a href="/blogs/hydro-siren"><h5 class="card-title">Hydro Siren System</h5></a>
+                  <a href="/blogs/hydro-siren-system"><h5 class="card-title">Hydro Siren System</h5></a>
                   <p class="card-text">Siren or alerting system is one of the essential features for hydropower in order to alert nearby people and/or settlement.</p>
                   {{-- <a href="/blogs/hydro-siren" class="btn btn-primary">View More</a> --}}
                 </div>
