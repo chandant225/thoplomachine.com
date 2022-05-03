@@ -56,7 +56,7 @@
 
           <div class="col-12 col-sm-12 col-md-6 col-lg-3">
             <div class="rounded shadow"  style="margin-top: 1rem;">
-                <img style="height: 12rem" src="/product_images/sensor based irrigation.jpg" class="card-img-top" alt="...">
+                <img style="height: 12rem" src="/product_images/co2.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Co2 Sensor</h5>
                   <p class="card-text">CO2 Sensors are used to measure the levels of carbon dioxide (CO2). It is important to monitor this gas as it is an indicator of CO2 emission levels.</p>
@@ -67,7 +67,7 @@
 
           <div class="col-12 col-sm-12 col-md-6 col-lg-3">
             <div class="rounded shadow"  style="margin-top: 1rem;">
-                <img style="height: 12rem" src="/product_images/sensor based irrigation.jpg" class="card-img-top" alt="...">
+                <img style="height: 12rem" src="/product_images/water.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Automatic water level controller</h5>
                   <p class="card-text"> Automatic water level controllers are a product that is created to automatically control a motor, which helps to ensure a constant reserve of water in a storage tank.</p>
@@ -78,7 +78,7 @@
 
           <div class="col-12 col-sm-12 col-md-6 col-lg-3">
             <div class="rounded shadow"  style="margin-top: 1rem;">
-                <img style="height: 12rem" src="/product_images/sensor based irrigation.jpg" class="card-img-top" alt="...">
+                <img style="height: 12rem" src="/product_images/weather.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Weater station</h5>
                   <p class="card-text">
@@ -92,7 +92,7 @@
 
           <div class="col-12 col-sm-12 col-md-6 col-lg-3">
             <div class="rounded shadow"  style="margin-top: 1rem;">
-                <img style="height: 12rem" src="/product_images/sensor based irrigation.jpg" class="card-img-top" alt="...">
+                <img style="height: 12rem" src="/product_images/drip.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Automatic Drip irrigation system</h5>
                   <p class="card-text">
@@ -105,7 +105,7 @@
 
           <div class="col-12 col-sm-12 col-md-6 col-lg-3">
             <div class="rounded shadow"  style="margin-top: 1rem;">
-                <img style="height: 12rem" src="/product_images/sensor based irrigation.jpg" class="card-img-top" alt="...">
+                <img style="height: 12rem" src="/product_images/hydrophonic.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Hydroponic</h5>
                   <p class="card-text">
@@ -118,7 +118,7 @@
 
           <div class="col-12 col-sm-12 col-md-6 col-lg-3">
             <div class="rounded shadow"  style="margin-top: 1rem;">
-                <img style="height: 12rem" src="/product_images/sensor based irrigation.jpg" class="card-img-top" alt="...">
+                <img style="height: 12rem" src="/product_images/Green house automation.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Greenhouse automation system</h5>
                   <p class="card-text">

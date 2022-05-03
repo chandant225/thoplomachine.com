@@ -27,7 +27,7 @@ Route::get('/portfolio', [App\Http\Controllers\Frontend\FrontendController::clas
 Route::get('/our-clients', [App\Http\Controllers\Frontend\FrontendController::class, 'portfolios']);
 Route::get('/category/portfolio/get', [App\Http\Controllers\Backend\Pages\PortfolioController::class, 'getCategories']);
 // service
-Route::get('/service/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'serviceDetail']);
+// Route::get('/service/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'serviceDetail']);
 // our teams
 Route::get('/our-team', [App\Http\Controllers\Frontend\FrontendController::class, 'ourTeam']);
 Route::get('/thank-you', [App\Http\Controllers\Frontend\FrontendController::class, 'thankyou']);
@@ -38,8 +38,8 @@ Route::get('/searchby/{category}', [App\Http\Controllers\Frontend\FrontendContro
 Route::get('/blog/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'blogDetail']);
 
 //services
-Route::get('services', [App\Http\Controllers\Frontend\FrontendController::class, 'services']);
-Route::get('service/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'serviceDetails']);
+Route::get('/services', [App\Http\Controllers\Frontend\FrontendController::class,'services']);
+Route::get('/service/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'serviceDetails']);
 
 //producsts
 Route::get('products', [App\Http\Controllers\Frontend\FrontendController::class, 'products']);
@@ -50,3 +50,4 @@ Route::get('/page/{slug}', [App\Http\Controllers\Frontend\FrontendController::cl
 Route::get('/blogs/hydro-siren', function() {
     return view('hydro-siren');
 });
+
