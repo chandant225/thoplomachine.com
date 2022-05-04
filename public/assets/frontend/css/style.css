@@ -510,13 +510,11 @@ section {
 }
 
 .cliens img {
-    max-width: 45%;
+    max-width: 65%;
     -webkit-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
     display: inline-block;
     padding: 15px 0;
-    -webkit-filter: grayscale(100);
-    filter: grayscale(100);
 }
 
 .cliens img:hover {
