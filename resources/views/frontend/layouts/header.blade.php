@@ -46,41 +46,35 @@
   <link href="{{ asset('assets/frontend/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/frontend/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/frontend/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-  {{-- <link href="{{ asset('assets/frontend/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet"> --}}
+  <link href="{{ asset('assets/frontend/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
   <link
   rel="stylesheet"
-  href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
-  />
-<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-<script>
+  href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+ <script>
   const swiper = new Swiper('.swiper', {
-  // Optional parameters
   direction: 'horizontal',
   loop: true,
   speed: 400,
   slidesPerView: 5,
   spaceBetween: 10,
-  // Responsive breakpoints
   breakpoints: {
-    // when window width is >= 320px
     320: {
       slidesPerView: 2,
       spaceBetween: 20
     },
-    // when window width is >= 480px
     480: {
       slidesPerView: 3,
       spaceBetween: 30
     },
-    // when window width is >= 640px
     640: {
       slidesPerView: 5,
       spaceBetween: 40
     }
   }
-
- 
 });
 
 </script>

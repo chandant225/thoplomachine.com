@@ -79,7 +79,7 @@
             <div class="rounded shadow"  style="margin-top: 1rem;">
                 <img style="height: 12rem" src="/product_images/weather.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <a href="#"><h5 class="card-title">Weater station</h5></a>
+                  <a href="#"><h5 class="card-title">Weather station</h5></a>
                   <p class="card-text">
                     A weather station is a facility, either on land or sea, with instruments and equipment for measuring atmospheric conditions to provide information for weather forecasts and to study the weather and climate.
                     {{-- {{\Illuminate\Support\Str::words('', 20)}}    --}}

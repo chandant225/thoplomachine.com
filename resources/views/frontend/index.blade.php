@@ -43,7 +43,7 @@
     <!-- ======= Cliens Section ======= -->
     <section id="cliens" class="cliens section-bg">
         <div class="container">
-          <div data-aos="zoom-in">
+          {{-- <div data-aos="zoom-in"> --}}
           <div class="swiper">
               <div class="swiper-wrapper">
                  @if (count($clients) > 0)
@@ -54,19 +54,19 @@
                     @endforeach
             @endif
             <div class="swiper-slide">
-                 <img  src="/client/client1.jpeg" alt="client1" class="" />
+             <img  src="/client/client1.jpeg" alt="client1" class="" />
             </div>
             <div class="swiper-slide">
               <img  src="/client/client2.jpeg" alt="client2" class="" />
-         </div>
-         <div class="swiper-slide">
-          <img  src="/client/client3.jpeg" alt="client3" class="" />
-     </div>
-              </div>
-          </div>
+            </div>
+            <div class="swiper-slide">
+             <img  src="/client/client3.jpeg" alt="client3" class="" />
+            </div>
+        </div>
+       </div>
          
 
-          </div>
+   {{-- </div> --}}
 
         </div>
       </section><!-- End Cliens Section -->
